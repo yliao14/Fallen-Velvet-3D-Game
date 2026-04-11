@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bxr64sawkt6d1"]
+
+[ext_resource type="PackedScene" uid="uid://bciuhr5xin7cf" path="res://bar_end.fbx" id="1_dg2q2"]
+
+[node name="Node3D" type="Node3D" unique_id=930825460]
+
+[node name="bar_end" parent="." unique_id=1164308897 instance=ExtResource("1_dg2q2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40249896, -1.1920929e-07, 11.1109705)
