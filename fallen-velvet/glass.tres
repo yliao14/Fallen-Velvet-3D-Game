@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://hq03p1c2wxsq"]
+
+[ext_resource type="Texture2D" uid="uid://qivcitoy4d7x" path="res://bar_end_0.png" id="1_mrxgi"]
+
+[resource]
+resource_name = "glass"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_mrxgi")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.0

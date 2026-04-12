@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c2r3od0t0hfkx"]
+
+[ext_resource type="Texture2D" uid="uid://qivcitoy4d7x" path="res://bar_end_0.png" id="1_ghe4m"]
+
+[resource]
+resource_name = "bar_atlas.EMIT"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_ghe4m")
+emission_enabled = true
+emission_energy_multiplier = 5.0
+emission_texture = ExtResource("1_ghe4m")
