@@ -7,6 +7,7 @@ const INTERACT_DISTANCE = 3.0
 
 @onready var head = $Head
 @onready var ray: RayCast3D = $Head/RayCast3D
+@onready var camera: Camera3D = $Head/Camera3D
 @onready var interact_label: Label = $CanvasLayer/InteractLabel
 @onready var crosshair: TextureRect = $CanvasLayer/Crosshair
 
@@ -19,7 +20,7 @@ func _ready() -> void:
 	ray.collision_mask = 2
 	interact_label.visible = false
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		rotation.y -= event.relative.x * MOUSE_SENSITIVITY
 		pitch += event.relative.y * MOUSE_SENSITIVITY
@@ -32,8 +33,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-	# 按 E 互動
+	# E 鍵互動
 	if event is InputEventKey and event.pressed and event.keycode == KEY_E:
+		print("E pressed, target: ", _current_target)
 		if _current_target and _current_target.has_method("interact"):
 			_current_target.interact()
 
@@ -65,13 +67,24 @@ func _physics_process(delta: float) -> void:
 	_check_raycast()
 
 func _check_raycast() -> void:
-	if ray.is_colliding():
-		var hit = ray.get_collider()
-		print("hitting: ", hit.name)    # ← 加這行
+	var viewport = get_viewport()
+	var screen_center = viewport.get_visible_rect().size / 2
+	
+	var ray_origin = camera.project_ray_origin(screen_center)
+	var ray_end = ray_origin + camera.project_ray_normal(screen_center) * INTERACT_DISTANCE
+	
+	var space_state = get_world_3d().direct_space_state
+	var query = PhysicsRayQueryParameters3D.create(ray_origin, ray_end)
+	query.collision_mask = 0xFFFFFFFF  # ← 改這行
+	query.exclude = [self]
+	
+	var result = space_state.intersect_ray(query)
+	
+	if result:
+		var hit = result.collider
+		print("hitting: ", hit.name)
+		_current_target = hit
 		
-		if hit != _current_target:
-			_current_target = hit
-
 		if hit.has_method("interact"):
 			interact_label.visible = true
 			if "item_id" in hit:
