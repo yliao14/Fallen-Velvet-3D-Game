@@ -75,14 +75,13 @@ func _check_raycast() -> void:
 	
 	var space_state = get_world_3d().direct_space_state
 	var query = PhysicsRayQueryParameters3D.create(ray_origin, ray_end)
-	query.collision_mask = 0xFFFFFFFF  # ← 改這行
+	query.collision_mask = 0xFFFFFFFF 
 	query.exclude = [self]
 	
 	var result = space_state.intersect_ray(query)
 	
 	if result:
 		var hit = result.collider
-		print("hitting: ", hit.name)
 		_current_target = hit
 		
 		if hit.has_method("interact"):
