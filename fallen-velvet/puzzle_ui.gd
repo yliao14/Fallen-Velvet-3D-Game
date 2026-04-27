@@ -17,10 +17,10 @@ extends CanvasLayer
 func _ready() -> void:
 	visible = false
 	
-	# 所有 slot 預設顯示底線
+
 	for slot in slots:
 		slot.text = "_"
-		slot.modulate = Color(1, 1, 1, 0.4)  # 半透明，代表還沒填
+		slot.modulate = Color(1, 1, 1, 0.4) 
 	
 	# 監聽 GameManager 事件
 	GameManager.photo_obtained.connect(_on_photo_obtained)
@@ -30,6 +30,8 @@ func _ready() -> void:
 
 # 拿到底片 → 拼字 UI 浮現
 func _on_photo_obtained() -> void:
+	if GameManager._all_letters_collected():
+		return
 	visible = true
 	puzzle_container.modulate.a = 0.0
 	
@@ -78,3 +80,9 @@ func _on_puzzle_completed() -> void:
 		var tween = create_tween()
 		tween.tween_property(slot, "modulate", Color(1.5, 1.3, 0.8), 0.3)
 		tween.tween_property(slot, "modulate", Color.WHITE, 0.3)
+	
+	await get_tree().create_timer(2.0).timeout
+	var fade = create_tween()
+	fade.tween_property(puzzle_container, "modulate:a", 0.0, 0.6)
+	await fade.finished
+	visible = false

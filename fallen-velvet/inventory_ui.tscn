@@ -111,3 +111,11 @@ offset_bottom = 378.0
 texture = ExtResource("6_5bopx")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="DeveloperSlot" type="TextureRect" parent="SidePanel" unique_id=1860875880]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 138.0
+offset_top = 408.0
+offset_right = 178.0
+offset_bottom = 448.0
