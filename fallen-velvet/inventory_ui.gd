@@ -9,6 +9,7 @@ extends CanvasLayer
 }
 
 @onready var photo_slot: TextureRect = $SidePanel/PhotoSlot
+@onready var developer_slot: TextureRect = $SidePanel/DeveloperSlot 
 @onready var side_panel: Control = $SidePanel
 
 var has_appeared: bool = false
@@ -66,11 +67,11 @@ func _on_item_collected(item_id: String) -> void:
 
 
 func _on_photo_obtained() -> void:
-	print("🎒 InventoryUI 收到 photo_obtained")
+	print("🎒 InventoryUI receives photo_obtained")
 	_animate_slot_unlock(photo_slot)
 
 func _on_developer_obtained() -> void:
-	print("🎒 InventoryUI 收到 developer_obtained")
+	print("🎒 InventoryUI receives developer_obtained")
 	_animate_slot_unlock(developer_slot)
 	
 
@@ -142,7 +143,6 @@ func _animate_slot_use(item_id: String) -> void:
 	
 	await tween.finished
 	
-	# 重置 scale 但保持透明（等同空 slot）
 	slot.scale = Vector2.ONE
 
 
