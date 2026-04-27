@@ -19,10 +19,6 @@ config/icon="res://icon.svg"
 
 GameManager="*uid://d1crmyvpqldeh"
 
-[filesystem]
-
-import/blender/enabled=false
-
 [input]
 
 interact={
