@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 GameManager="*uid://d1crmyvpqldeh"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [filesystem]
 
 import/blender/enabled=false
