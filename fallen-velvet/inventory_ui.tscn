@@ -3,13 +3,11 @@
 [ext_resource type="Script" uid="uid://1qaxfae0ms2c" path="res://inventory_ui.gd" id="1_gf3dx"]
 [ext_resource type="Texture2D" uid="uid://d1s17hqb0hmdy" path="res://ui/inventory.png" id="2_34y5v"]
 [ext_resource type="Texture2D" uid="uid://bf0n37piwokbp" path="res://vodka.png" id="3_r57pj"]
-[ext_resource type="Texture2D" uid="uid://clde15suggqer" path="res://Tomato/Preview/Tomato_Outlined_Transparent.png" id="4_jn3b8"]
-[ext_resource type="Texture2D" uid="uid://4cu1yl21rxfm" path="res://black pepper.png" id="5_jn3b8"]
+[ext_resource type="Texture2D" uid="uid://cfchiuxelgs" path="res://tomato icon.png" id="4_o6um4"]
+[ext_resource type="Texture2D" uid="uid://dyqqk4u4v8mif" path="res://lemon icon.png" id="5_m5yu5"]
 [ext_resource type="Texture2D" uid="uid://040bkxb882pn" path="res://Photo/photoblank.png" id="6_5bopx"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_5bopx"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_jn3b8"]
+[ext_resource type="Texture2D" uid="uid://bhai3wtllnkkp" path="res://peper icon.png" id="6_m5yu5"]
+[ext_resource type="Texture2D" uid="uid://c3sf70284mj63" path="res://celery icon.png" id="7_bbtsg"]
 
 [node name="InventoryUI" type="CanvasLayer" unique_id=1200093958]
 layer = 20
@@ -61,45 +59,45 @@ stretch_mode = 6
 
 [node name="TomatoSlot" type="TextureRect" parent="SidePanel" unique_id=1610791217]
 layout_mode = 0
-offset_left = 138.0
-offset_top = 57.0
-offset_right = 178.0
-offset_bottom = 97.0
+offset_left = 82.0
+offset_top = 1.0
+offset_right = 234.0
+offset_bottom = 153.0
 mouse_filter = 0
-texture = ExtResource("4_jn3b8")
+texture = ExtResource("4_o6um4")
 expand_mode = 1
 stretch_mode = 5
 
 [node name="LemonSlot" type="TextureRect" parent="SidePanel" unique_id=1334797615]
 layout_mode = 0
-offset_left = 139.0
-offset_top = 127.0
-offset_right = 179.0
-offset_bottom = 167.0
+offset_left = 97.0
+offset_top = 85.0
+offset_right = 221.0
+offset_bottom = 209.0
 mouse_filter = 0
-texture = SubResource("PlaceholderTexture2D_5bopx")
+texture = ExtResource("5_m5yu5")
 expand_mode = 1
 stretch_mode = 5
 
 [node name="PepperSlot" type="TextureRect" parent="SidePanel" unique_id=68168851]
 layout_mode = 0
-offset_left = 138.0
-offset_top = 198.0
-offset_right = 178.0
-offset_bottom = 238.0
+offset_left = 92.0
+offset_top = 152.0
+offset_right = 224.0
+offset_bottom = 284.0
 mouse_filter = 0
-texture = ExtResource("5_jn3b8")
+texture = ExtResource("6_m5yu5")
 expand_mode = 1
 stretch_mode = 5
 
 [node name="CelerySlot" type="TextureRect" parent="SidePanel" unique_id=90677616]
 layout_mode = 0
-offset_left = 139.0
-offset_top = 268.0
-offset_right = 179.0
-offset_bottom = 308.0
+offset_left = 104.0
+offset_top = 233.0
+offset_right = 214.0
+offset_bottom = 343.0
 mouse_filter = 0
-texture = SubResource("PlaceholderTexture2D_jn3b8")
+texture = ExtResource("7_bbtsg")
 expand_mode = 1
 stretch_mode = 5
 

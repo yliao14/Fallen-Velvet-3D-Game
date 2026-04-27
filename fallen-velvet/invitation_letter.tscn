@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://7tfepbus0eek" path="res://invitation_letter.gd" id="1_sq0ru"]
 [ext_resource type="Texture2D" uid="uid://hixuhnopifjf" path="res://Letter BG.jpg" id="2_sq0ru"]
+[ext_resource type="FontFile" uid="uid://d3jfv41vfox4m" path="res://AmericanTypewriter.ttc" id="3_50hp6"]
 
 [sub_resource type="SystemFont" id="SystemFont_arnnf"]
 
@@ -57,6 +58,7 @@ offset_top = 66.0
 offset_right = 754.0
 offset_bottom = 529.0
 theme_override_colors/default_color = Color(0.17279169, 0.049606353, 0.0018435823, 1)
+theme_override_fonts/normal_font = ExtResource("3_50hp6")
 theme_override_font_sizes/normal_font_size = 14
 bbcode_enabled = true
 
@@ -67,6 +69,7 @@ offset_top = 556.0
 offset_right = 760.0
 offset_bottom = 581.0
 theme_override_colors/default_color = Color(0.17254902, 0.050980393, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_50hp6")
 bbcode_enabled = true
 
 [node name="SkipButton" type="Button" parent="." unique_id=730684555]
