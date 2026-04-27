@@ -1,0 +1,131 @@
+[gd_scene format=3 uid="uid://dfvn5xhtoeqvs"]
+
+[ext_resource type="Texture2D" uid="uid://debp28i2r3e53" path="res://ui/pause.png" id="1_6736i"]
+[ext_resource type="Script" uid="uid://cufyg16m58hpj" path="res://pause_ui.gd" id="1_quoyv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_quoyv"]
+bg_color = Color(0.83297884, 0.7555949, 0.63872695, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tidwg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j2twg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5w4hl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cd4je"]
+bg_color = Color(0.37168238, 0.27437735, 0.17539617, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_quoyv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cd4je"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tce7n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nehuh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tce7n"]
+bg_color = Color(0.32416016, 0.023904243, 6.016344e-08, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.67230505, 1.8169359e-06, 3.85046e-07, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b4yyp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a1xgm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rkwc1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jvv32"]
+
+[node name="PauseUI" type="CanvasLayer" unique_id=1810694656]
+process_mode = 3
+layer = 25
+script = ExtResource("1_quoyv")
+
+[node name="PauseButton" type="TextureButton" parent="." unique_id=1709093331]
+custom_minimum_size = Vector2(50, 50)
+offset_left = 33.0
+offset_top = 27.999998
+offset_right = 1287.0
+offset_bottom = 1282.0
+scale = Vector2(0.05, 0.05)
+texture_normal = ExtResource("1_6736i")
+
+[node name="PauseMenu" type="Control" parent="." unique_id=1339836626]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="PauseMenu" unique_id=234075967]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.17490578, 0.06263052, 0, 0.6862745)
+
+[node name="ResumeButton" type="Button" parent="PauseMenu" unique_id=2056629575]
+process_mode = 3
+layout_mode = 0
+offset_left = 402.0
+offset_top = 125.0
+offset_right = 746.0
+offset_bottom = 231.0
+theme_override_colors/font_color = Color(0.34169102, 0.17406687, 0, 1)
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_quoyv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_tidwg")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_j2twg")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5w4hl")
+text = "Resume"
+
+[node name="MainMenuButton" type="Button" parent="PauseMenu" unique_id=652664263]
+process_mode = 3
+layout_mode = 0
+offset_left = 401.0
+offset_top = 272.0
+offset_right = 744.0
+offset_bottom = 378.0
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_cd4je")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_quoyv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_cd4je")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_tce7n")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nehuh")
+text = "Main Menu"
+
+[node name="QuitButton" type="Button" parent="PauseMenu" unique_id=937282995]
+process_mode = 3
+layout_mode = 0
+offset_left = 405.0
+offset_top = 413.0
+offset_right = 747.0
+offset_bottom = 518.0
+theme_override_colors/font_color = Color(0.8828967, 0.28179634, 0.2246629, 1)
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_tce7n")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_b4yyp")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_a1xgm")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_rkwc1")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jvv32")
+text = "Quit"

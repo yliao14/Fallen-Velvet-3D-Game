@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://cirq7mfn8xf16"]
+
+[ext_resource type="Script" uid="uid://7tfepbus0eek" path="res://invitation_letter.gd" id="1_sq0ru"]
+[ext_resource type="Texture2D" uid="uid://hixuhnopifjf" path="res://Letter BG.jpg" id="2_sq0ru"]
+
+[sub_resource type="SystemFont" id="SystemFont_arnnf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sq0ru"]
+bg_color = Color(0.52183527, 0.43374768, 0.3360944, 0.43137255)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.6195865, 0.39688227, 0.23668656, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_50hp6"]
+bg_color = Color(0.610555, 0.4875741, 0.36511692, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+
+[node name="Invitation Letter" type="Control" unique_id=1143548021]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_sq0ru")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1574099516]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1144.0
+offset_bottom = 651.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.11764706, 0.03529412, 0, 0.627451)
+
+[node name="LetterImage" type="TextureRect" parent="." unique_id=453241351]
+layout_mode = 0
+offset_left = 357.0
+offset_top = 26.0
+offset_right = 787.0
+offset_bottom = 614.82886
+texture = ExtResource("2_sq0ru")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="LetterText" type="RichTextLabel" parent="." unique_id=1213048159]
+layout_mode = 0
+offset_left = 390.0
+offset_top = 66.0
+offset_right = 754.0
+offset_bottom = 529.0
+theme_override_colors/default_color = Color(0.17279169, 0.049606353, 0.0018435823, 1)
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+
+[node name="FooterText" type="RichTextLabel" parent="." unique_id=12716747]
+layout_mode = 0
+offset_left = 639.0
+offset_top = 556.0
+offset_right = 760.0
+offset_bottom = 581.0
+theme_override_colors/default_color = Color(0.17254902, 0.050980393, 0, 1)
+bbcode_enabled = true
+
+[node name="SkipButton" type="Button" parent="." unique_id=730684555]
+custom_minimum_size = Vector2(-20, -60)
+layout_mode = 0
+offset_left = 896.0
+offset_top = 566.0
+offset_right = 1075.0
+offset_bottom = 615.0
+theme_override_colors/font_color = Color(0.76111484, 0.5881758, 0.3997236, 1)
+theme_override_colors/font_pressed_color = Color(0.18776056, 0.0915708, 0.002814999, 1)
+theme_override_colors/font_hover_color = Color(0.3021626, 0.16270453, 0.009925018, 1)
+theme_override_fonts/font = SubResource("SystemFont_arnnf")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_sq0ru")
+theme_override_styles/hover = SubResource("StyleBoxFlat_50hp6")
+text = "Skip"

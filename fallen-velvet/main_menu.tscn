@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://b72dj6g0fkshr"]
+
+[ext_resource type="Texture2D" uid="uid://dbyo1o1kgoudk" path="res://start/start copy.jpg" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://dwywgljow5n4x" path="res://main_menu.gd" id="1_fu7sn"]
+[ext_resource type="Texture2D" uid="uid://dxkqbo44khj5s" path="res://start/start copy.png" id="2_7vrkn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jix8l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_glbon"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nlkkf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qe12f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8qtwp"]
+
+[node name="Main menu" type="Control" unique_id=1673656920]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_fu7sn")
+
+[node name="Background" type="TextureRect" parent="." unique_id=884019853]
+layout_mode = 0
+offset_right = 1150.5
+offset_bottom = 646.0
+texture = ExtResource("1_06t4h")
+expand_mode = 2
+
+[node name="StartButton" type="Button" parent="." unique_id=1097052245]
+layout_mode = 0
+offset_left = -28.0
+offset_top = -69.0
+offset_right = 1180.0
+offset_bottom = 731.0
+theme_override_font_sizes/font_size = 48
+theme_override_icons/icon = ExtResource("2_7vrkn")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jix8l")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_glbon")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_nlkkf")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_qe12f")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8qtwp")
