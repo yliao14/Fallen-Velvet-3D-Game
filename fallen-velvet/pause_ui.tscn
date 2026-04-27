@@ -2,50 +2,41 @@
 
 [ext_resource type="Texture2D" uid="uid://debp28i2r3e53" path="res://ui/pause.png" id="1_6736i"]
 [ext_resource type="Script" uid="uid://cufyg16m58hpj" path="res://pause_ui.gd" id="1_quoyv"]
+[ext_resource type="FontFile" uid="uid://d3jfv41vfox4m" path="res://AmericanTypewriter.ttc" id="3_j2twg"]
+[ext_resource type="Texture2D" uid="uid://6rdwcdu2ogi" path="res://paper.png" id="4_5w4hl"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_quoyv"]
-bg_color = Color(0.83297884, 0.7555949, 0.63872695, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cd4je"]
+texture = ExtResource("4_5w4hl")
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tidwg"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5w4hl"]
+texture = ExtResource("4_5w4hl")
+modulate_color = Color(0.70980394, 0.52156866, 0.32941177, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j2twg"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5w4hl"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cd4je"]
-bg_color = Color(0.37168238, 0.27437735, 0.17539617, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tce7n"]
+texture = ExtResource("4_5w4hl")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_quoyv"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cd4je"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j2twg"]
+texture = ExtResource("4_5w4hl")
+modulate_color = Color(0.70856243, 0.5233873, 0.33096305, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tce7n"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nehuh"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tce7n"]
-bg_color = Color(0.32416016, 0.023904243, 6.016344e-08, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.67230505, 1.8169359e-06, 3.85046e-07, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nehuh"]
+texture = ExtResource("4_5w4hl")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b4yyp"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a1xgm"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a1xgm"]
+texture = ExtResource("4_5w4hl")
+modulate_color = Color(0.5604344, 0.09104917, 0.18993634, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rkwc1"]
 
@@ -91,15 +82,16 @@ anchor_left = 0.503
 anchor_top = 0.27800003
 anchor_right = 0.503
 anchor_bottom = 0.27800003
-offset_left = -151.45605
-offset_top = -50.144012
-offset_right = 152.04395
-offset_bottom = 49.855988
+offset_left = -178.77106
+offset_top = -59.144012
+offset_right = 179.35901
+offset_bottom = 58.855988
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.34169102, 0.17406687, 0, 1)
-theme_override_font_sizes/font_size = 36
-theme_override_styles/normal = SubResource("StyleBoxFlat_quoyv")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_tidwg")
+theme_override_fonts/font = ExtResource("3_j2twg")
+theme_override_font_sizes/font_size = 43
+theme_override_styles/normal = SubResource("StyleBoxTexture_cd4je")
+theme_override_styles/hover = SubResource("StyleBoxTexture_5w4hl")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_j2twg")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_5w4hl")
 text = "Resume"
@@ -112,16 +104,18 @@ anchor_left = 0.505
 anchor_top = 0.505
 anchor_right = 0.505
 anchor_bottom = 0.505
-offset_left = -152.76001
-offset_top = -52.23999
-offset_right = 153.23999
-offset_bottom = 51.76001
+offset_left = -176.29846
+offset_top = -60.23999
+offset_right = 176.77844
+offset_bottom = 59.76001
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 36
-theme_override_styles/normal = SubResource("StyleBoxFlat_cd4je")
+theme_override_colors/font_color = Color(0.34117648, 0.17254902, 0, 1)
+theme_override_fonts/font = ExtResource("3_j2twg")
+theme_override_font_sizes/font_size = 43
+theme_override_styles/normal = SubResource("StyleBoxTexture_tce7n")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_quoyv")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_cd4je")
+theme_override_styles/hover = SubResource("StyleBoxTexture_j2twg")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_tce7n")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_nehuh")
 text = "Main Menu"
@@ -134,17 +128,18 @@ anchor_left = 0.50600004
 anchor_top = 0.74300003
 anchor_right = 0.50600004
 anchor_bottom = 0.74300003
-offset_left = -153.91205
-offset_top = -53.46402
-offset_right = 153.08795
-offset_bottom = 53.53598
+offset_left = -179.7345
+offset_top = -62.46402
+offset_right = 178.9104
+offset_bottom = 62.53598
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_colors/font_color = Color(0.8828967, 0.28179634, 0.2246629, 1)
-theme_override_font_sizes/font_size = 36
-theme_override_styles/normal = SubResource("StyleBoxFlat_tce7n")
+theme_override_colors/font_color = Color(0.6611648, 0, 0.052030824, 1)
+theme_override_fonts/font = ExtResource("3_j2twg")
+theme_override_font_sizes/font_size = 43
+theme_override_styles/normal = SubResource("StyleBoxTexture_nehuh")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_b4yyp")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_a1xgm")
+theme_override_styles/hover = SubResource("StyleBoxTexture_a1xgm")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_rkwc1")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_jvv32")
 text = "Quit"
