@@ -82,11 +82,11 @@ func _ready() -> void:
 
 func collect_recipe() -> void:
 	if has_recipe:
+		print("cannot pick up")
 		return
 	has_recipe = true
 	recipe_found.emit()
 	_advance_quest(QuestStage.COLLECT_INGREDIENTS)
-	print("📜 拿到食譜")
 
 
 func collect_item(item_id: String) -> void:
@@ -110,7 +110,7 @@ func find_cocktail_glass() -> void:
 	has_cocktail_glass = true
 	cocktail_glass_found.emit()
 	_advance_quest(QuestStage.MIX_COCKTAIL)
-	print("🥃 找到酒杯")
+	print("find the glass")
 
 
 func add_to_cocktail(item_id: String) -> bool:

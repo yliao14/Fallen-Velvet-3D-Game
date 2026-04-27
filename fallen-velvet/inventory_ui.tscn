@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://040bkxb882pn" path="res://Photo/photoblank.png" id="6_5bopx"]
 [ext_resource type="Texture2D" uid="uid://bhai3wtllnkkp" path="res://peper icon.png" id="6_m5yu5"]
 [ext_resource type="Texture2D" uid="uid://c3sf70284mj63" path="res://celery icon.png" id="7_bbtsg"]
+[ext_resource type="Texture2D" uid="uid://coacu6mxkdmqd" path="res://显影液:冲洗液/Preview Images/GlassBottleWithCork.png" id="9_bbtsg"]
 
 [node name="InventoryUI" type="CanvasLayer" unique_id=1200093958]
 layer = 20
@@ -109,5 +110,16 @@ offset_top = 338.0
 offset_right = 179.0
 offset_bottom = 378.0
 texture = ExtResource("6_5bopx")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="DeveloperSlot" type="TextureRect" parent="SidePanel" unique_id=1860875880]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 109.0
+offset_top = 379.0
+offset_right = 210.0
+offset_bottom = 480.0
+texture = ExtResource("9_bbtsg")
 expand_mode = 1
 stretch_mode = 5

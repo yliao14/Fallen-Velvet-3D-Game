@@ -9,6 +9,7 @@ extends CanvasLayer
 }
 
 @onready var photo_slot: TextureRect = $SidePanel/PhotoSlot
+@onready var developer_slot: TextureRect = $SidePanel/DeveloperSlot 
 @onready var side_panel: Control = $SidePanel
 
 var has_appeared: bool = false
@@ -29,6 +30,7 @@ func _ready() -> void:
 	GameManager.recipe_found.connect(_on_recipe_found)
 	GameManager.item_collected.connect(_on_item_collected)
 	GameManager.photo_obtained.connect(_on_photo_obtained) 
+	GameManager.developer_obtained.connect(_on_developer_obtained)
 	
 	# 為每個 slot 加入 mouse 點擊事件
 	for item_id in slots.keys():
@@ -65,9 +67,13 @@ func _on_item_collected(item_id: String) -> void:
 
 
 func _on_photo_obtained() -> void:
-	print("🎒 InventoryUI 收到 photo_obtained")
+	print("🎒 InventoryUI receives photo_obtained")
 	_animate_slot_unlock(photo_slot)
 
+func _on_developer_obtained() -> void:
+	print("🎒 InventoryUI receives developer_obtained")
+	_animate_slot_unlock(developer_slot)
+	
 
 func _on_photo_clicked() -> void:
 	print("📷 點擊底片")
@@ -137,5 +143,10 @@ func _animate_slot_use(item_id: String) -> void:
 	
 	await tween.finished
 	
-	# 重置 scale 但保持透明（等同空 slot）
 	slot.scale = Vector2.ONE
+
+
+func _process(_delta: float) -> void:
+	if has_appeared and not side_panel.visible:
+		side_panel.visible = true
+		side_panel.modulate.a = 1.0
