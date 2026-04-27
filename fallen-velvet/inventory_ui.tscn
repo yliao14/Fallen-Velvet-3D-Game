@@ -1,0 +1,115 @@
+[gd_scene format=3 uid="uid://534nwtpgohtp"]
+
+[ext_resource type="Script" uid="uid://1qaxfae0ms2c" path="res://inventory_ui.gd" id="1_gf3dx"]
+[ext_resource type="Texture2D" uid="uid://d1s17hqb0hmdy" path="res://ui/inventory.png" id="2_34y5v"]
+[ext_resource type="Texture2D" uid="uid://bf0n37piwokbp" path="res://vodka.png" id="3_r57pj"]
+[ext_resource type="Texture2D" uid="uid://clde15suggqer" path="res://Tomato/Preview/Tomato_Outlined_Transparent.png" id="4_jn3b8"]
+[ext_resource type="Texture2D" uid="uid://4cu1yl21rxfm" path="res://black pepper.png" id="5_jn3b8"]
+[ext_resource type="Texture2D" uid="uid://040bkxb882pn" path="res://Photo/photoblank.png" id="6_5bopx"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_5bopx"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_jn3b8"]
+
+[node name="InventoryUI" type="CanvasLayer" unique_id=1200093958]
+layer = 20
+script = ExtResource("1_gf3dx")
+
+[node name="SidePanel" type="Control" parent="." unique_id=197117047]
+custom_minimum_size = Vector2(100, 500)
+layout_mode = 3
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -234.0
+offset_top = -100.0
+offset_right = -32.42993
+offset_bottom = 100.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="BackgroundImage" type="TextureRect" parent="SidePanel" unique_id=1842307816]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -874.0
+offset_top = -77.0
+offset_right = 75.42993
+offset_bottom = 66.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_34y5v")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VodkaSlot" type="TextureRect" parent="SidePanel" unique_id=967854609]
+layout_mode = 0
+offset_left = 140.0
+offset_top = -13.0
+offset_right = 180.0
+offset_bottom = 27.0
+mouse_filter = 0
+texture = ExtResource("3_r57pj")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="TomatoSlot" type="TextureRect" parent="SidePanel" unique_id=1610791217]
+layout_mode = 0
+offset_left = 138.0
+offset_top = 57.0
+offset_right = 178.0
+offset_bottom = 97.0
+mouse_filter = 0
+texture = ExtResource("4_jn3b8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="LemonSlot" type="TextureRect" parent="SidePanel" unique_id=1334797615]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 127.0
+offset_right = 179.0
+offset_bottom = 167.0
+mouse_filter = 0
+texture = SubResource("PlaceholderTexture2D_5bopx")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PepperSlot" type="TextureRect" parent="SidePanel" unique_id=68168851]
+layout_mode = 0
+offset_left = 138.0
+offset_top = 198.0
+offset_right = 178.0
+offset_bottom = 238.0
+mouse_filter = 0
+texture = ExtResource("5_jn3b8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CelerySlot" type="TextureRect" parent="SidePanel" unique_id=90677616]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 268.0
+offset_right = 179.0
+offset_bottom = 308.0
+mouse_filter = 0
+texture = SubResource("PlaceholderTexture2D_jn3b8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PhotoSlot" type="TextureRect" parent="SidePanel" unique_id=807744804]
+modulate = Color(0.7529412, 0.70980394, 0.6117647, 0)
+layout_mode = 0
+offset_left = 139.0
+offset_top = 338.0
+offset_right = 179.0
+offset_bottom = 378.0
+texture = ExtResource("6_5bopx")
+expand_mode = 1
+stretch_mode = 5

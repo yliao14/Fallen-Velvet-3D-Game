@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://cjmtkkpukwagf"]
+
+[ext_resource type="Script" uid="uid://lnffkq0jrev2" path="res://interactable.gd" id="1_5gbsb"]
+[ext_resource type="Texture2D" uid="uid://b2jyps8t8mw44" path="res://upstairs card/upstairs-02.png" id="2_5gbsb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jpu73"]
+transparency = 1
+albedo_texture = ExtResource("2_5gbsb")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_088p8"]
+material = SubResource("StandardMaterial3D_jpu73")
+size = Vector2(0.15, 0.15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5gbsb"]
+size = Vector3(0.15, 0.15, 0.019628907)
+
+[node name="Node3D" type="StaticBody3D" unique_id=2126586678]
+collision_layer = 2
+script = ExtResource("1_5gbsb")
+interactable_type = 7
+prompt_text = "[E] Pick up letter"
+letter_char = "\"\""
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1114483130]
+mesh = SubResource("PlaneMesh_088p8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=976561584]
+transform = Transform3D(1, 0, 0, 0, -0.008377476, 0.99996495, 0, -0.99996495, -0.008377476, 0, -0.0004410781, 0.00045076298)
+shape = SubResource("BoxShape3D_5gbsb")

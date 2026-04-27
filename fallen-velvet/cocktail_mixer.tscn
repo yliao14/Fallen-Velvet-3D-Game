@@ -1,0 +1,147 @@
+[gd_scene format=3 uid="uid://dvsi0uwuftbh1"]
+
+[ext_resource type="Script" uid="uid://uv6v46a2ic7q" path="res://cocktail_mixer.gd" id="1_hdxaf"]
+[ext_resource type="Texture2D" uid="uid://bpj5d2j0u3vic" path="res://cocktail glass.png" id="2_6bw1j"]
+[ext_resource type="Texture2D" uid="uid://bq4xqq3e07yc4" path="res://liquid.png" id="3_yl1yx"]
+[ext_resource type="Texture2D" uid="uid://040bkxb882pn" path="res://Photo/photoblank.png" id="4_6bw1j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hdxaf"]
+bg_color = Color(0.76862746, 0.6392157, 0.4862745, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hdxaf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6bw1j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yl1yx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7tyge"]
+
+[node name="CocktailMixer" type="CanvasLayer" unique_id=970622239]
+layer = 15
+script = ExtResource("1_hdxaf")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1233109907]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0.09803922, 0.03137255, 0, 0.8627451)
+
+[node name="GlassDisplay" type="Control" parent="." unique_id=415963185]
+custom_minimum_size = Vector2(400, 600)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -300.0
+offset_right = 200.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GlassImage" type="TextureRect" parent="GlassDisplay" unique_id=976762573]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 70.0
+offset_top = 113.0
+offset_right = -80.0
+offset_bottom = -87.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_6bw1j")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="LiquidShape" type="TextureRect" parent="GlassDisplay" unique_id=154639533]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 70.0
+offset_top = 113.0
+offset_right = -80.0
+offset_bottom = -87.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_yl1yx")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Instructions" type="Label" parent="." unique_id=259431849]
+anchors_preset = -1
+anchor_left = 0.50100005
+anchor_top = 0.035
+anchor_right = 0.50100005
+anchor_bottom = 0.035
+offset_left = -211.15204
+offset_top = 21.32
+offset_right = 211.84796
+offset_bottom = 55.32
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.937465, 0.77593976, 1)
+theme_override_font_sizes/font_size = 24
+text = "Add ingredients from your inventory"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MixButton" type="Button" parent="." unique_id=1526018215]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -100.0
+offset_right = 71.5
+offset_bottom = -41.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.25856712, 0.11683866, 0, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_hdxaf")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_hdxaf")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_6bw1j")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_yl1yx")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7tyge")
+text = "Mix"
+
+[node name="DevelopingOverlay" type="ColorRect" parent="." unique_id=654881653]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.21417072, 0.012677958, 0.0031719129, 0)
+
+[node name="PhotoReveal" type="TextureRect" parent="." unique_id=40926734]
+visible = false
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(720, 480)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_6bw1j")
+expand_mode = 1
+stretch_mode = 5

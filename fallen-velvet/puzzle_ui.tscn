@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://cnceb54ydoheh"]
+
+[ext_resource type="Script" uid="uid://dewfry7tnt2ta" path="res://puzzle_ui.gd" id="1_scvx3"]
+
+[node name="PuzzleUI" type="CanvasLayer" unique_id=1377154106]
+layer = 7
+visible = false
+script = ExtResource("1_scvx3")
+
+[node name="PuzzleContainer" type="HBoxContainer" parent="." unique_id=2097892771]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -293.0
+offset_top = -102.0
+offset_right = 292.0
+offset_bottom = -62.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 15
+
+[node name="Slot_0" type="Label" parent="PuzzleContainer" unique_id=647489216]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9017492, 0.7627119, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.003921569)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 48
+text = "_"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot_1" type="Label" parent="PuzzleContainer" unique_id=552292348]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9019608, 0.7607843, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.003921569)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 48
+text = "_"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot_2" type="Label" parent="PuzzleContainer" unique_id=556942542]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9019608, 0.7607843, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.003921569)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 48
+text = "_"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot_3" type="Label" parent="PuzzleContainer" unique_id=633517864]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9019608, 0.7607843, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.003921569)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 48
+text = "_"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot_4" type="Label" parent="PuzzleContainer" unique_id=219470851]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9019608, 0.7607843, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.003921569)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 48
+text = "_"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot_5" type="Label" parent="PuzzleContainer" unique_id=1990129622]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9019608, 0.7607843, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.003921569)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 48
+text = "_"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot_6" type="Label" parent="PuzzleContainer" unique_id=1355109018]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9019608, 0.7607843, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.003921569)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 48
+text = "_"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot_7" type="Label" parent="PuzzleContainer" unique_id=1424397228]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9019608, 0.7607843, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.003921569)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 48
+text = "_"
+horizontal_alignment = 1
+vertical_alignment = 1
