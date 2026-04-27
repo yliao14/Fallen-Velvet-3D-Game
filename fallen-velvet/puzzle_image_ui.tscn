@@ -1,0 +1,172 @@
+[gd_scene format=3 uid="uid://54vkgmyqiltd"]
+
+[ext_resource type="Script" uid="uid://dxtibgd2udea2" path="res://puzzle_image_ui.gd" id="1_3wa8f"]
+[ext_resource type="Texture2D" uid="uid://dim38aotb4fyb" path="res://Wooden table texture.jpg" id="2_di52o"]
+[ext_resource type="Texture2D" uid="uid://d2bo7wu440gxi" path="res://Puzzles/Puzzles-full.png" id="3_s15d7"]
+[ext_resource type="Texture2D" uid="uid://csagxqi6lu1ki" path="res://Puzzles/Puzzles.png" id="4_wxjc6"]
+[ext_resource type="Texture2D" uid="uid://ctgikk1pducg2" path="res://Puzzles/Puzzles-2.png" id="5_k1aee"]
+[ext_resource type="Texture2D" uid="uid://dsytcisndbavu" path="res://Puzzles/Puzzles-3.png" id="6_t7kc0"]
+[ext_resource type="Texture2D" uid="uid://dmt0k4vf2sq7n" path="res://Puzzles/Puzzles-4.png" id="7_76jiu"]
+[ext_resource type="Texture2D" uid="uid://cf84pm5njnvo5" path="res://Puzzles/Puzzles-5.png" id="8_kpq2m"]
+[ext_resource type="Texture2D" uid="uid://dbweuroyo5vrq" path="res://Puzzles/Puzzles-6.png" id="9_6pkdt"]
+[ext_resource type="Texture2D" uid="uid://dmy5oeqk286j2" path="res://Puzzles/Puzzles-7.png" id="10_svfm4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i0kfe"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i665q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vtws2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a1tch"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1jc14"]
+
+[node name="PuzzleImageUI" type="CanvasLayer" unique_id=1230655495]
+layer = 12
+script = ExtResource("1_3wa8f")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1612307581]
+modulate = Color(0.6708867, 0.60181224, 0.5183598, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_di52o")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="DimOverlay" type="ColorRect" parent="." unique_id=1124706490]
+modulate = Color(0.0035191667, 0.0035191681, 0.0035191672, 0.20392157)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PuzzleArea" type="Control" parent="." unique_id=1026640563]
+custom_minimum_size = Vector2(400, 500)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -202.0
+offset_top = -271.0
+offset_right = 198.0
+offset_bottom = 278.64703
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TargetOutline" type="TextureRect" parent="PuzzleArea" unique_id=433202287]
+modulate = Color(1, 1, 1, 0.25)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 14.0
+offset_right = 1.0
+offset_bottom = 13.999939
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_s15d7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PiecesContainer" type="Control" parent="PuzzleArea" unique_id=569838117]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Piece_0" type="TextureRect" parent="PuzzleArea/PiecesContainer" unique_id=845408486]
+custom_minimum_size = Vector2(400, 549.647)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 0
+texture = ExtResource("4_wxjc6")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Piece_1" type="TextureRect" parent="PuzzleArea/PiecesContainer" unique_id=1885314172]
+custom_minimum_size = Vector2(400, 549.647)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 0
+texture = ExtResource("5_k1aee")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Piece_2" type="TextureRect" parent="PuzzleArea/PiecesContainer" unique_id=525289081]
+custom_minimum_size = Vector2(400, 549.647)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 0
+texture = ExtResource("6_t7kc0")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Piece_3" type="TextureRect" parent="PuzzleArea/PiecesContainer" unique_id=1220040001]
+custom_minimum_size = Vector2(400, 549.647)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 0
+texture = ExtResource("7_76jiu")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Piece_4" type="TextureRect" parent="PuzzleArea/PiecesContainer" unique_id=1939760496]
+custom_minimum_size = Vector2(400, 549.647)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 0
+texture = ExtResource("8_kpq2m")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Piece_5" type="TextureRect" parent="PuzzleArea/PiecesContainer" unique_id=980589039]
+custom_minimum_size = Vector2(400, 549.647)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 0
+texture = ExtResource("9_6pkdt")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Piece_6" type="TextureRect" parent="PuzzleArea/PiecesContainer" unique_id=509042152]
+custom_minimum_size = Vector2(400, 549.647)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 0
+texture = ExtResource("10_svfm4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CloseButton" type="Button" parent="." unique_id=1663442940]
+custom_minimum_size = Vector2(40, 40)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -119.0
+offset_top = 32.0
+offset_right = -43.0
+offset_bottom = 108.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_i0kfe")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_i665q")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_vtws2")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_a1tch")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1jc14")
+text = "X"

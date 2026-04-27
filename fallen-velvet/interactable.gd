@@ -10,6 +10,8 @@ enum InteractableType {
 	CELERY,
 	COCKTAIL_GLASS,
 	LETTER,
+	PUZZLE_PIECE,
+	DEVELOPER,   
 }
 
 @export var interactable_type: InteractableType = InteractableType.VODKA
@@ -56,9 +58,16 @@ func interact() -> void:
 			_disappear()
 		InteractableType.COCKTAIL_GLASS:
 			GameManager.find_cocktail_glass()
-		InteractableType.LETTER:                              # ⭐ NEW
+		InteractableType.LETTER:                              
 			var letter_id = letter_char + "_" + str(letter_index)
 			GameManager.collect_letter(letter_id)
+			_disappear()
+		InteractableType.PUZZLE_PIECE:
+			var puzzle_ui = get_tree().get_first_node_in_group("puzzle_image_ui")
+			if puzzle_ui and puzzle_ui.has_method("open_puzzle"):
+				puzzle_ui.open_puzzle()
+		InteractableType.DEVELOPER:
+			GameManager.obtain_developer()
 			_disappear()
 	
 	# 發出 signal 給其他系統

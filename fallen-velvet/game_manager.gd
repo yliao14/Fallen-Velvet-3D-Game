@@ -9,6 +9,11 @@ signal quest_stage_changed(new_stage: QuestStage)
 signal photo_obtained
 signal letter_collected(letter: String)
 signal puzzle_completed
+signal puzzle_image_completed
+signal panel_opened         
+signal developer_obtained    
+signal lights_dimmed
+signal flashlight_state_changed(is_on: bool)
 
 # === 任務階段 ===
 enum QuestStage {
@@ -17,7 +22,7 @@ enum QuestStage {
 	FIND_GLASS,
 	MIX_COCKTAIL,
 	FIND_LETTERS,
-	# 拼完字後就會切到下一關（或下一階段），不需要 GO_UPSTAIRS
+	SOLVE_PUZZLE, 
 }
 
 var current_stage: QuestStage = QuestStage.FIND_RECIPE
@@ -27,6 +32,9 @@ var has_recipe: bool = false
 var has_cocktail_glass: bool = false
 var is_cocktail_completed: bool = false
 var has_photo: bool = false
+var has_developer: bool = false
+var is_room_dimmed: bool = false
+var is_flashlight_on: bool = false
 
 # === Inventory ===
 var inventory: Dictionary = {
@@ -42,6 +50,8 @@ var cocktail_contents: Array[String] = []
 # === 字母拼字系統 ===
 const TARGET_WORD: String = "UPSTAIRS"
 var collected_letters: Dictionary = {}
+
+var is_puzzle_image_completed: bool = false
 
 const ALL_INGREDIENTS: Array[String] = ["vodka", "tomato", "lemon", "pepper", "celery"]
 
@@ -59,6 +69,7 @@ const QUEST_TEXTS: Dictionary = {
 	QuestStage.FIND_GLASS: "Find the Cocktail Glass",
 	QuestStage.MIX_COCKTAIL: "Mix the cocktail",
 	QuestStage.FIND_LETTERS: "Find the letters",
+	QuestStage.SOLVE_PUZZLE: "Piece together the image",
 }
 
 
@@ -142,17 +153,18 @@ func grant_photo() -> void:
 
 func collect_letter(letter_id: String) -> void:
 	if not collected_letters.has(letter_id):
-		push_warning("未知的 letter_id: " + letter_id)
 		return
 	if collected_letters[letter_id]:
 		return
 	
 	collected_letters[letter_id] = true
 	letter_collected.emit(letter_id)
-	
+	print("🔤 撿到字母: ", letter_id)
 	
 	if _all_letters_collected():
 		puzzle_completed.emit()
+		_advance_quest(QuestStage.SOLVE_PUZZLE)   # ⭐ NEW
+		print("🎉 字母拼完！UPSTAIRS")
 		
 
 
@@ -191,3 +203,42 @@ func get_letter_progress() -> int:
 		if collected_letters[key]:
 			count += 1
 	return count
+	
+func complete_puzzle_image() -> void:
+	if is_puzzle_image_completed:
+		return
+	is_puzzle_image_completed = true
+	puzzle_image_completed.emit()
+	
+	# ⭐ NEW: 拼圖完成後 1 秒自動觸發板子開啟
+	await get_tree().create_timer(1.0).timeout
+	panel_opened.emit()
+
+	
+	
+func obtain_developer() -> void:
+	if has_developer:
+		return
+	has_developer = true
+	developer_obtained.emit()
+	print("💧 拿到顯影液")
+	
+	# 自動觸發燈光全暗 + 啟用手電筒
+	_dim_lights()
+
+
+func _dim_lights() -> void:
+	if is_room_dimmed:
+		return
+	is_room_dimmed = true
+	lights_dimmed.emit()
+	print("🌑 燈光全暗")
+
+
+func toggle_flashlight() -> void:
+	# 只有房間暗了才能開手電筒
+	if not is_room_dimmed:
+		return
+	is_flashlight_on = not is_flashlight_on
+	flashlight_state_changed.emit(is_flashlight_on)
+	print("🔦 手電筒: ", "ON" if is_flashlight_on else "OFF")

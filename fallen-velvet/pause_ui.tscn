@@ -66,7 +66,6 @@ scale = Vector2(0.05, 0.05)
 texture_normal = ExtResource("1_6736i")
 
 [node name="PauseMenu" type="Control" parent="." unique_id=1339836626]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -86,11 +85,17 @@ color = Color(0.17490578, 0.06263052, 0, 0.6862745)
 
 [node name="ResumeButton" type="Button" parent="PauseMenu" unique_id=2056629575]
 process_mode = 3
-layout_mode = 0
-offset_left = 402.0
-offset_top = 125.0
-offset_right = 746.0
-offset_bottom = 231.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.503
+anchor_top = 0.27800003
+anchor_right = 0.503
+anchor_bottom = 0.27800003
+offset_left = -151.45605
+offset_top = -50.144012
+offset_right = 152.04395
+offset_bottom = 49.855988
+grow_horizontal = 2
 theme_override_colors/font_color = Color(0.34169102, 0.17406687, 0, 1)
 theme_override_font_sizes/font_size = 36
 theme_override_styles/normal = SubResource("StyleBoxFlat_quoyv")
@@ -101,11 +106,18 @@ text = "Resume"
 
 [node name="MainMenuButton" type="Button" parent="PauseMenu" unique_id=652664263]
 process_mode = 3
-layout_mode = 0
-offset_left = 401.0
-offset_top = 272.0
-offset_right = 744.0
-offset_bottom = 378.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.505
+anchor_top = 0.505
+anchor_right = 0.505
+anchor_bottom = 0.505
+offset_left = -152.76001
+offset_top = -52.23999
+offset_right = 153.23999
+offset_bottom = 51.76001
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 36
 theme_override_styles/normal = SubResource("StyleBoxFlat_cd4je")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_quoyv")
@@ -116,11 +128,18 @@ text = "Main Menu"
 
 [node name="QuitButton" type="Button" parent="PauseMenu" unique_id=937282995]
 process_mode = 3
-layout_mode = 0
-offset_left = 405.0
-offset_top = 413.0
-offset_right = 747.0
-offset_bottom = 518.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.50600004
+anchor_top = 0.74300003
+anchor_right = 0.50600004
+anchor_bottom = 0.74300003
+offset_left = -153.91205
+offset_top = -53.46402
+offset_right = 153.08795
+offset_bottom = 53.53598
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_colors/font_color = Color(0.8828967, 0.28179634, 0.2246629, 1)
 theme_override_font_sizes/font_size = 36
 theme_override_styles/normal = SubResource("StyleBoxFlat_tce7n")
