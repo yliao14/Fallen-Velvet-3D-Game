@@ -71,18 +71,22 @@ func _animate_slot_fill(slot: Label, letter: String) -> void:
 	tween2.tween_property(slot, "scale", Vector2.ONE, 0.2)
 
 
-# 全拼完 → 跑燈高亮（從左到右每個字母依序閃光）
 func _on_puzzle_completed() -> void:
+	# 跑燈動畫
 	for i in range(slots.size()):
 		var slot = slots[i]
 		await get_tree().create_timer(0.1).timeout
-		
 		var tween = create_tween()
 		tween.tween_property(slot, "modulate", Color(1.5, 1.3, 0.8), 0.3)
 		tween.tween_property(slot, "modulate", Color.WHITE, 0.3)
 	
-	await get_tree().create_timer(2.0).timeout
-	var fade = create_tween()
-	fade.tween_property(puzzle_container, "modulate:a", 0.0, 0.6)
-	await fade.finished
+	await get_tree().create_timer(1.5).timeout
+	
+	# ⭐ NEW: 觸發 cutscene 顯示「8 張紙片組合」的 PNG
+	var cutscene = get_tree().get_first_node_in_group("cutscene_ui")
+	if cutscene and cutscene.has_method("play_cutscene"):
+		var combined_image = preload("res://upstairs card/upstair.png")  # 改成你的路徑
+		await cutscene.play_cutscene(combined_image, "UPSTAIRS", 4.0)
+	
+	# Cutscene 結束後永久隱藏字母 UI
 	visible = false

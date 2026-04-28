@@ -13,14 +13,6 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_laep0"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6tkeg"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m0pfx"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l235j"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i0eei"]
-
 [node name="RecipeUI" type="CanvasLayer" unique_id=1851556844]
 layer = 10
 script = ExtResource("1_xq7p0")
@@ -40,7 +32,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.18936506, 0.09054861, 7.219613e-08, 0.5294118)
+color = Color(0.15516809, 0.07384554, 6.016344e-09, 0.88235295)
 
 [node name="RecipeImage" type="TextureRect" parent="FullscreenView" unique_id=558189712]
 layout_mode = 1
@@ -60,6 +52,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="CloseButton" type="Button" parent="FullscreenView" unique_id=590602269]
+visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -78,30 +71,11 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_yxixe")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_laep0")
 text = "X"
 
-[node name="IconView" type="Control" parent="." unique_id=332740653]
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_left = 33.0
-offset_top = 91.0
-offset_right = 103.0
-offset_bottom = 170.82455
-
-[node name="RecipeIcon" type="Button" parent="IconView" unique_id=1650364884]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 1.0
-offset_right = -2.0
-offset_bottom = -1.2807312
-grow_horizontal = 2
-grow_vertical = 2
-tooltip_text = "\"Recipe (R)\""
-theme_override_styles/normal = SubResource("StyleBoxEmpty_6tkeg")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_m0pfx")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_l235j")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_i0eei")
-icon = ExtResource("1_28hbj")
-expand_icon = true
+[node name="RecipeIcon" type="TextureButton" parent="." unique_id=1102438833]
+offset_left = 25.0
+offset_top = 120.0
+offset_right = 101.0
+offset_bottom = 190.0
+texture_normal = ExtResource("1_28hbj")
+ignore_texture_size = true
+stretch_mode = 5

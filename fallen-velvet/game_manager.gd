@@ -14,6 +14,10 @@ signal panel_opened
 signal developer_obtained    
 signal lights_dimmed
 signal flashlight_state_changed(is_on: bool)
+signal flashlight_obtained
+signal code_found(digit: int)        
+signal all_codes_found                  
+signal code_lock_unlocked    
 
 # === 任務階段 ===
 enum QuestStage {
@@ -23,6 +27,9 @@ enum QuestStage {
 	MIX_COCKTAIL,
 	FIND_LETTERS,
 	SOLVE_PUZZLE, 
+	FIND_DEVELOPER,
+	FIND_FLASHLIGHT,
+	FIND_CODES,
 }
 
 var current_stage: QuestStage = QuestStage.FIND_RECIPE
@@ -35,6 +42,7 @@ var has_photo: bool = false
 var has_developer: bool = false
 var is_room_dimmed: bool = false
 var is_flashlight_on: bool = false
+var has_flashlight: bool = false
 
 # === Inventory ===
 var inventory: Dictionary = {
@@ -64,12 +72,22 @@ const INGREDIENT_NAMES: Dictionary = {
 }
 
 const QUEST_TEXTS: Dictionary = {
-	QuestStage.FIND_RECIPE: "Find the Recipe",
+	QuestStage.FIND_RECIPE: "Find the recipe",
 	QuestStage.COLLECT_INGREDIENTS: "Find the ingredients",
-	QuestStage.FIND_GLASS: "Find the Cocktail Glass",
+	QuestStage.FIND_GLASS: "Find the cocktail glass",
 	QuestStage.MIX_COCKTAIL: "Mix the cocktail",
 	QuestStage.FIND_LETTERS: "Find the letters",
 	QuestStage.SOLVE_PUZZLE: "Piece together the image",
+	QuestStage.FIND_DEVELOPER: "Find the developer fluid",
+	QuestStage.FIND_FLASHLIGHT: "Find a flashlight",
+	QuestStage.FIND_CODES: "Find the hidden codes",
+}
+
+const TARGET_CODE: String = "427"
+var found_codes: Dictionary = {
+	"4": false,
+	"2": false,
+	"7": false,
 }
 
 
@@ -87,6 +105,10 @@ func collect_recipe() -> void:
 	has_recipe = true
 	recipe_found.emit()
 	_advance_quest(QuestStage.COLLECT_INGREDIENTS)
+	
+	var toast = get_tree().get_first_node_in_group("toast_ui")
+	if toast:
+		toast.show_toast("[R] toggle the recipe")
 
 
 func collect_item(item_id: String) -> void:
@@ -98,7 +120,7 @@ func collect_item(item_id: String) -> void:
 	
 	inventory[item_id] = true
 	item_collected.emit(item_id)
-	print("✨ 拿到材料: " + item_id)
+
 	
 	if _all_ingredients_collected():
 		_advance_quest(QuestStage.FIND_GLASS)
@@ -110,7 +132,7 @@ func find_cocktail_glass() -> void:
 	has_cocktail_glass = true
 	cocktail_glass_found.emit()
 	_advance_quest(QuestStage.MIX_COCKTAIL)
-	print("find the glass")
+	
 
 
 func add_to_cocktail(item_id: String) -> bool:
@@ -121,7 +143,7 @@ func add_to_cocktail(item_id: String) -> bool:
 	
 	inventory[item_id] = false
 	cocktail_contents.append(item_id)
-	print("🍸 加入酒杯: " + item_id)
+
 	return true
 
 
@@ -138,16 +160,14 @@ func complete_cocktail() -> void:
 	# has_photo + photo_obtained 改成由 cocktail_mixer 在動畫結束時觸發
 	
 	_advance_quest(QuestStage.FIND_LETTERS)
-	print("🎬 調酒完成！")
+	
 
-
-# ⭐ NEW: 底片動畫播完後由 cocktail_mixer 呼叫
 func grant_photo() -> void:
 	if has_photo:
 		return
 	has_photo = true
 	photo_obtained.emit()
-	print("📷 底片進 inventory")
+
 	
 
 
@@ -159,12 +179,12 @@ func collect_letter(letter_id: String) -> void:
 	
 	collected_letters[letter_id] = true
 	letter_collected.emit(letter_id)
-	print("🔤 撿到字母: ", letter_id)
+	
 	
 	if _all_letters_collected():
 		puzzle_completed.emit()
-		_advance_quest(QuestStage.SOLVE_PUZZLE)   # ⭐ NEW
-		print("🎉 字母拼完！UPSTAIRS")
+		_advance_quest(QuestStage.SOLVE_PUZZLE)
+	
 		
 
 
@@ -173,10 +193,13 @@ func has_item(item_id: String) -> bool:
 
 
 func _advance_quest(new_stage: QuestStage) -> void:
+
 	if new_stage == current_stage:
+		print("   → same stage, skip")
 		return
 	current_stage = new_stage
 	quest_stage_changed.emit(new_stage)
+	print("   ✅ signal emitted, new text: ", get_current_quest_text()) 
 
 
 func _all_ingredients_collected() -> bool:
@@ -210,9 +233,11 @@ func complete_puzzle_image() -> void:
 	is_puzzle_image_completed = true
 	puzzle_image_completed.emit()
 	
-	# ⭐ NEW: 拼圖完成後 1 秒自動觸發板子開啟
+	# 拼圖完成後 1 秒自動觸發板子開啟
 	await get_tree().create_timer(1.0).timeout
 	panel_opened.emit()
+	
+	_advance_quest(QuestStage.FIND_DEVELOPER)
 
 	
 	
@@ -221,24 +246,69 @@ func obtain_developer() -> void:
 		return
 	has_developer = true
 	developer_obtained.emit()
-	print("💧 拿到顯影液")
+	_advance_quest(QuestStage.FIND_FLASHLIGHT)
 	
-	# 自動觸發燈光全暗 + 啟用手電筒
+	
 	_dim_lights()
 
+func obtain_flashlight() -> void:
+	if has_flashlight:
+		return
+	has_flashlight = true
+	flashlight_obtained.emit()
+	_advance_quest(QuestStage.FIND_CODES)
+	_show_toast("[F] turn on the flashlight")
 
 func _dim_lights() -> void:
 	if is_room_dimmed:
 		return
 	is_room_dimmed = true
 	lights_dimmed.emit()
-	print("🌑 燈光全暗")
+
 
 
 func toggle_flashlight() -> void:
-	# 只有房間暗了才能開手電筒
+
 	if not is_room_dimmed:
 		return
 	is_flashlight_on = not is_flashlight_on
 	flashlight_state_changed.emit(is_flashlight_on)
 	print("🔦 手電筒: ", "ON" if is_flashlight_on else "OFF")
+	
+# Helper
+func _show_toast(message: String) -> void:
+	var toast = get_tree().get_first_node_in_group("toast_ui")
+	if toast and toast.has_method("show_toast"):
+		toast.show_toast(message)
+		
+func find_code(digit: String) -> void:
+	if not found_codes.has(digit):
+		push_warning("Unknown code digit: " + digit)
+		return
+	if found_codes[digit]:
+		return
+	
+	found_codes[digit] = true
+	code_found.emit(int(digit))
+	print("🔢 找到密碼數字: ", digit)
+	
+	if _all_codes_found():
+		all_codes_found.emit()
+		print("🎉 三個密碼都找到了！")
+
+
+func _all_codes_found() -> bool:
+	for digit in found_codes.keys():
+		if not found_codes[digit]:
+			return false
+	return true
+
+
+func attempt_code_unlock(input_code: String) -> bool:
+	if input_code == TARGET_CODE:
+		code_lock_unlocked.emit()
+		print("🔓 密碼正確！")
+		return true
+	else:
+		print("❌ 密碼錯誤: ", input_code)
+		return false

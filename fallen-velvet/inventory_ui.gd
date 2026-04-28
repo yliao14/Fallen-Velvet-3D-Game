@@ -67,12 +67,12 @@ func _on_item_collected(item_id: String) -> void:
 
 
 func _on_photo_obtained() -> void:
-	print("🎒 InventoryUI receives photo_obtained")
 	_animate_slot_unlock(photo_slot)
+	_show_toast("Photo obtained!")
 
 func _on_developer_obtained() -> void:
-	print("🎒 InventoryUI receives developer_obtained")
 	_animate_slot_unlock(developer_slot)
+	_show_toast("Developer obtained!")
 	
 
 func _on_photo_clicked() -> void:
@@ -150,3 +150,9 @@ func _process(_delta: float) -> void:
 	if has_appeared and not side_panel.visible:
 		side_panel.visible = true
 		side_panel.modulate.a = 1.0
+		
+# Helper
+func _show_toast(message: String) -> void:
+	var toast = get_tree().get_first_node_in_group("toast_ui")
+	if toast and toast.has_method("show_toast"):
+		toast.show_toast(message)

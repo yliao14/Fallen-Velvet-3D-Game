@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://ccw3wyvbwibvx"]
+
+[ext_resource type="Script" uid="uid://b77rwlhn8qfl2" path="res://code_lock_ui.gd" id="1_7c7gk"]
+[ext_resource type="Texture2D" uid="uid://cbsrqyonq0sna" path="res://password/password.png" id="2_ln0kf"]
+[ext_resource type="FontFile" uid="uid://d3jfv41vfox4m" path="res://AmericanTypewriter.ttc" id="3_iae8w"]
+
+[node name="CodeLockUI" type="CanvasLayer" unique_id=2084539154]
+layer = 18
+script = ExtResource("1_7c7gk")
+
+[node name="Background" type="ColorRect" parent="." unique_id=155848558]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.85)
+
+[node name="LockPanel" type="Control" parent="." unique_id=604321239]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackgroundImage" type="TextureRect" parent="LockPanel" unique_id=798129998]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -13.9140005
+anchor_top = -7.5750003
+anchor_right = 15.000001
+anchor_bottom = 8.303
+offset_left = -0.0032348633
+offset_right = -6.1035156e-05
+offset_bottom = 14.037262
+texture = ExtResource("2_ln0kf")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Dial_0" type="Label" parent="LockPanel" unique_id=833980807]
+custom_minimum_size = Vector2(50, 80)
+layout_mode = 0
+offset_left = -86.0
+offset_top = -20.0
+offset_right = -36.0
+offset_bottom = 84.0
+theme_override_colors/font_color = Color(0.26385552, 0.10818411, 5.1740557e-07, 1)
+theme_override_font_sizes/font_size = 64
+text = "_"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Dial_1" type="Label" parent="LockPanel" unique_id=1674050602]
+custom_minimum_size = Vector2(50, 80)
+layout_mode = 0
+offset_left = -3.0
+offset_top = -20.0
+offset_right = 47.0
+offset_bottom = 84.0
+theme_override_colors/font_color = Color(0.26385552, 0.10818411, 5.1740557e-07, 1)
+theme_override_font_sizes/font_size = 64
+text = "_"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Dial_2" type="Label" parent="LockPanel" unique_id=49707269]
+custom_minimum_size = Vector2(50, 80)
+layout_mode = 0
+offset_left = 81.0
+offset_top = -19.0
+offset_right = 131.0
+offset_bottom = 85.0
+theme_override_colors/font_color = Color(0.26385552, 0.10818411, 5.1740557e-07, 1)
+theme_override_font_sizes/font_size = 64
+text = "_"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HintLabel" type="Label" parent="." unique_id=244626208]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -74.0
+offset_top = -137.0
+offset_right = 94.0
+offset_bottom = -103.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.956708, 0.82547367, 0.67809725, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_iae8w")
+theme_override_font_sizes/font_size = 24
+text = "Type the code "

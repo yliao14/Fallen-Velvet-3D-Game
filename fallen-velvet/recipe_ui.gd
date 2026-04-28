@@ -2,7 +2,7 @@ extends CanvasLayer
 
 @onready var fullscreen_view: Control = $FullscreenView
 @onready var close_button: Button = $FullscreenView/CloseButton
-@onready var recipe_icon: Button = $IconView/RecipeIcon
+@onready var recipe_icon: TextureButton = $RecipeIcon
 
 var player: Node = null
 var has_shown_first_time: bool = false
@@ -24,14 +24,19 @@ func _ready() -> void:
 
 
 func _on_recipe_found() -> void:
+	# 第一次拿到 recipe → 自動全螢幕
 	if not has_shown_first_time:
 		has_shown_first_time = true
 		show_fullscreen()
 
 
+# ⭐ Public API：可以從外面呼叫（interactable.gd 也會用）
 func show_fullscreen() -> void:
 	fullscreen_view.visible = true
 	fullscreen_view.modulate.a = 0.0
+	
+	# 釋放 cursor
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 	var tween = create_tween()
 	tween.tween_property(fullscreen_view, "modulate:a", 1.0, 0.4)
@@ -48,6 +53,9 @@ func _on_close_pressed() -> void:
 
 func _after_close() -> void:
 	fullscreen_view.visible = false
+	
+	# 鎖回 cursor
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	if player and player.has_method("set_ui_open"):
 		player.set_ui_open(false)

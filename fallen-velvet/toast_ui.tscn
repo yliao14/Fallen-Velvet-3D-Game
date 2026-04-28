@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bobicc7c1wxak"]
+
+[ext_resource type="Script" uid="uid://b7g6hltsx54ea" path="res://toast_ui.gd" id="1_0goxa"]
+[ext_resource type="FontFile" uid="uid://d3jfv41vfox4m" path="res://AmericanTypewriter.ttc" id="2_854jb"]
+
+[node name="ToastUI" type="CanvasLayer" unique_id=144426235]
+layer = 30
+visible = false
+script = ExtResource("1_0goxa")
+
+[node name="ToastLabel" type="Label" parent="." unique_id=75985430]
+custom_minimum_size = Vector2(1000, 100)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9804042, 0.97269243, 0.9309246, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_854jb")
+theme_override_font_sizes/font_size = 48
+horizontal_alignment = 1
+vertical_alignment = 1

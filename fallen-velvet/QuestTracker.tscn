@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://v5l41sm7vhs2"]
+
+[ext_resource type="Script" uid="uid://clipa8lnw58to" path="res://quest_tracker.gd" id="1_71ta1"]
+[ext_resource type="FontFile" uid="uid://d3jfv41vfox4m" path="res://AmericanTypewriter.ttc" id="1_wmtl7"]
+
+[node name="QuestTracker" type="CanvasLayer" unique_id=531126024]
+script = ExtResource("1_71ta1")
+
+[node name="QuestLabel" type="Label" parent="." unique_id=964285731]
+offset_left = 127.0
+offset_top = 37.0
+offset_right = 366.0
+offset_bottom = 83.0
+theme_override_fonts/font = ExtResource("1_wmtl7")
+theme_override_font_sizes/font_size = 32
+text = "Find the Recipe"
+horizontal_alignment = 1
+vertical_alignment = 1

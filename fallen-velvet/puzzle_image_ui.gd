@@ -264,6 +264,10 @@ func _on_puzzle_completed() -> void:
 	# 通知 GameManager
 	GameManager.complete_puzzle_image()
 	
+	var toast = get_tree().get_first_node_in_group("toast_ui")
+	if toast:
+		toast.show_toast("Panel opened")
+	
 	# 整個 UI 淡出（個別元素淡出）
 	var fade = create_tween().set_parallel(true)
 	fade.tween_property(dim_overlay, "modulate:a", 0.0, 1.0)

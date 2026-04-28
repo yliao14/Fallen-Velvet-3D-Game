@@ -11,14 +11,17 @@ enum InteractableType {
 	COCKTAIL_GLASS,
 	LETTER,
 	PUZZLE_PIECE,
-	DEVELOPER,   
+	DEVELOPER,
+	FLASHLIGHT, 
+	CODE_DIGIT, 
 }
 
 @export var interactable_type: InteractableType = InteractableType.VODKA
 @export var prompt_text: String = "Press [E] to pick up"
 @export var repeatable: bool = false
 @export var letter_char: String = ""        # 字母本身，例如 "U"
-@export var letter_index: int = 0           # 在 UPSTAIRS 中的位置 (0~7)
+@export var letter_index: int = 0   
+@export var code_digit: String = ""        # 在 UPSTAIRS 中的位置 (0~7)
 
 var is_used: bool = false
 
@@ -30,18 +33,20 @@ func _ready() -> void:
 
 
 func interact() -> void:
-	print("🎯 interact() 觸發，type = ", interactable_type)
 	if is_used and not repeatable:
-		print("⚠️ 已使用過，跳過")
 		return
 	
 	
 	match interactable_type:
 		InteractableType.RECIPE:
-			GameManager.collect_recipe()
-			# Recipe 不消失，玩家可以重複互動（但只觸發一次首次顯示）
+			if not GameManager.has_recipe:
+				GameManager.collect_recipe()
+	
+		# ⭐ 不論第幾次，都打開 recipe UI
+			var recipe_ui = get_tree().get_first_node_in_group("recipe_ui")
+			if recipe_ui and recipe_ui.has_method("show_fullscreen"):
+				recipe_ui.show_fullscreen()
 		InteractableType.VODKA:
-			print("🍾 呼叫 collect_item(vodka)")
 			GameManager.collect_item("vodka")
 			_disappear()
 		InteractableType.TOMATO:
@@ -57,7 +62,12 @@ func interact() -> void:
 			GameManager.collect_item("celery")
 			_disappear()
 		InteractableType.COCKTAIL_GLASS:
-			GameManager.find_cocktail_glass()
+			if not GameManager.has_cocktail_glass:
+				GameManager.find_cocktail_glass()
+			else:
+				var mixer = get_tree().get_first_node_in_group("cocktail_mixer")
+				if mixer and mixer.has_method("_on_glass_found"):
+					mixer._on_glass_found()
 		InteractableType.LETTER:                              
 			var letter_id = letter_char + "_" + str(letter_index)
 			GameManager.collect_letter(letter_id)
@@ -69,6 +79,13 @@ func interact() -> void:
 		InteractableType.DEVELOPER:
 			GameManager.obtain_developer()
 			_disappear()
+		InteractableType.FLASHLIGHT:
+			GameManager.obtain_flashlight()
+			_disappear()
+		InteractableType.CODE_DIGIT:
+			if has_node("DigitVisual") and $DigitVisual.is_lit:
+				GameManager.find_code(code_digit)
+				_on_code_recorded()
 	
 	# 發出 signal 給其他系統
 	interacted.emit(interactable_type, self)
@@ -85,3 +102,10 @@ func _disappear() -> void:
 	
 	await tween.finished
 	queue_free()
+
+# 數字記下後的視覺反饋
+func _on_code_recorded() -> void:
+	is_used = true
+	# 數字短暫閃爍後固定發光（已記錄狀態）
+	if has_node("DigitVisual"):
+		$DigitVisual.set_recorded()
