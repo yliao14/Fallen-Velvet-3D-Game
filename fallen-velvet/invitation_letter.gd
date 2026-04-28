@@ -180,7 +180,7 @@ func _go_to_main_game() -> void:
 	var tween = create_tween()
 	tween.tween_property(self, "modulate:a", 0.0, fade_duration)
 	tween.tween_callback(func():
-		get_tree().change_scene_to_file("res://main_game.tscn")
+		get_tree().change_scene_to_file("res://loading.tscn")
 	)
 
 
