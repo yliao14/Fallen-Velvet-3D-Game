@@ -17,7 +17,8 @@ signal flashlight_state_changed(is_on: bool)
 signal flashlight_obtained
 signal code_found(digit: int)        
 signal all_codes_found                  
-signal code_lock_unlocked    
+signal code_lock_unlocked   
+signal locker_unlocked 
 
 # === 任務階段 ===
 enum QuestStage {
@@ -30,6 +31,7 @@ enum QuestStage {
 	FIND_DEVELOPER,
 	FIND_FLASHLIGHT,
 	FIND_CODES,
+	DEVELOP_PHOTO,
 }
 
 var current_stage: QuestStage = QuestStage.FIND_RECIPE
@@ -43,6 +45,7 @@ var has_developer: bool = false
 var is_room_dimmed: bool = false
 var is_flashlight_on: bool = false
 var has_flashlight: bool = false
+var is_locker_unlocked: bool = false
 
 # === Inventory ===
 var inventory: Dictionary = {
@@ -312,3 +315,11 @@ func attempt_code_unlock(input_code: String) -> bool:
 	else:
 		print("❌ 密碼錯誤: ", input_code)
 		return false
+
+func unlock_locker() -> void:   # ⭐ 原本是 unlock_safe
+	if is_locker_unlocked:
+		return
+	is_locker_unlocked = true
+	locker_unlocked.emit()
+	_advance_quest(QuestStage.DEVELOP_PHOTO)
+	print("Locker unlocked")

@@ -11,6 +11,7 @@ extends CanvasLayer
 @onready var photo_slot: TextureRect = $SidePanel/PhotoSlot
 @onready var developer_slot: TextureRect = $SidePanel/DeveloperSlot 
 @onready var side_panel: Control = $SidePanel
+@onready var develop_button: Button = $SidePanel/DevelopButton
 
 var has_appeared: bool = false
 var is_clickable_mode: bool = false
@@ -27,10 +28,14 @@ func _ready() -> void:
 	photo_slot.modulate.a = 0.0
 	photo_slot.gui_input.connect(_on_photo_input)
 	
+	develop_button.visible = false
+	develop_button.pressed.connect(_on_develop_pressed)
+	
 	GameManager.recipe_found.connect(_on_recipe_found)
 	GameManager.item_collected.connect(_on_item_collected)
 	GameManager.photo_obtained.connect(_on_photo_obtained) 
 	GameManager.developer_obtained.connect(_on_developer_obtained)
+	GameManager.locker_unlocked.connect(_on_locker_unlocked) 
 	
 	# 為每個 slot 加入 mouse 點擊事件
 	for item_id in slots.keys():
@@ -156,3 +161,36 @@ func _show_toast(message: String) -> void:
 	var toast = get_tree().get_first_node_in_group("toast_ui")
 	if toast and toast.has_method("show_toast"):
 		toast.show_toast(message)
+		
+func _on_locker_unlocked() -> void:  
+	if GameManager.has_photo and GameManager.has_developer:
+		_show_develop_button()
+		
+func _show_develop_button() -> void:
+	develop_button.visible = true
+	develop_button.modulate.a = 0.0
+	develop_button.scale = Vector2(0.8, 0.8)
+	develop_button.pivot_offset = develop_button.size / 2.0
+	
+	var tween = create_tween().set_parallel(true)
+	tween.tween_property(develop_button, "modulate:a", 1.0, 0.5)
+	tween.tween_property(develop_button, "scale", Vector2.ONE, 0.5)\
+		.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	
+	await tween.finished
+	_pulse_develop_button()
+
+
+func _pulse_develop_button() -> void:
+	var pulse = create_tween()
+	pulse.set_loops()
+	pulse.tween_property(develop_button, "modulate", Color(1.3, 1.3, 1.3), 0.8)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	pulse.tween_property(develop_button, "modulate", Color.WHITE, 0.8)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+
+
+func _on_develop_pressed() -> void:
+	var ending = get_tree().get_first_node_in_group("ending_ui")
+	if ending and ending.has_method("start_developing"):
+		ending.start_developing()

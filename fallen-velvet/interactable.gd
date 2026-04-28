@@ -14,6 +14,7 @@ enum InteractableType {
 	DEVELOPER,
 	FLASHLIGHT, 
 	CODE_DIGIT, 
+	LOCKER,
 }
 
 @export var interactable_type: InteractableType = InteractableType.VODKA
@@ -86,6 +87,16 @@ func interact() -> void:
 			if has_node("DigitVisual") and $DigitVisual.is_lit:
 				GameManager.find_code(code_digit)
 				_on_code_recorded()
+		InteractableType.LOCKER:
+			if not GameManager._all_codes_found():
+				var toast = get_tree().get_first_node_in_group("toast_ui")
+				if toast:
+					toast.show_toast("Find all the codes first")
+				return
+	
+			var lock_ui = get_tree().get_first_node_in_group("code_lock_ui")
+			if lock_ui and lock_ui.has_method("open_lock"):
+				lock_ui.open_lock()
 	
 	# 發出 signal 給其他系統
 	interacted.emit(interactable_type, self)

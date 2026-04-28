@@ -108,7 +108,6 @@ func _validate() -> void:
 
 
 func _on_unlock_success() -> void:
-	# 綠色閃光
 	for dial in dials:
 		var tween = create_tween()
 		tween.tween_property(dial, "modulate", Color(0.3, 1.0, 0.4), 0.3)
@@ -118,7 +117,6 @@ func _on_unlock_success() -> void:
 	
 	await get_tree().create_timer(1.5).timeout
 	
-	# 淡出 UI
 	var fade = create_tween().set_parallel(true)
 	fade.tween_property(background, "modulate:a", 0.0, 1.0)
 	fade.tween_property(lock_panel, "modulate:a", 0.0, 1.0)
@@ -132,7 +130,9 @@ func _on_unlock_success() -> void:
 	
 	var toast = get_tree().get_first_node_in_group("toast_ui")
 	if toast:
-		toast.show_toast("Lock unlocked")
+		toast.show_toast("Locker unlocked — check your inventory")
+	
+	GameManager.unlock_locker() 
 
 
 func _on_unlock_fail() -> void:

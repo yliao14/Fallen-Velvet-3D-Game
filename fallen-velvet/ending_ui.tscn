@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://ciggjgffjtbeu"]
+
+[ext_resource type="Script" uid="uid://bk8657ahflvkj" path="res://ending_ui.gd" id="1_qkvxn"]
+[ext_resource type="Texture2D" uid="uid://348vb2f0eard" path="res://Photo/girl.png" id="2_2v1b7"]
+[ext_resource type="FontFile" uid="uid://d3jfv41vfox4m" path="res://AmericanTypewriter.ttc" id="3_0xfos"]
+
+[node name="EndingUI" type="CanvasLayer" unique_id=600525068]
+script = ExtResource("1_qkvxn")
+
+[node name="DarkOverlay" type="ColorRect" parent="." unique_id=806438739]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.13100296, 0.0659402, 0.0035193567, 1)
+
+[node name="DevelopingEffect" type="ColorRect" parent="." unique_id=1787110351]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.37632865, 0.08735316, 0.09206814, 0)
+
+[node name="PhotoReveal" type="TextureRect" parent="." unique_id=1374236890]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -451.0
+offset_top = -307.0
+offset_right = 442.0
+offset_bottom = 322.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_2v1b7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TruthLabel" type="Label" parent="." unique_id=350734778]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -126.0
+offset_top = -82.0
+offset_right = 131.0
+offset_bottom = -45.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.7172241, 0.23851743, 0.14306408, 1)
+theme_override_fonts/font = ExtResource("3_0xfos")
+theme_override_font_sizes/font_size = 32
+text = "Truth revealed..."
+
+[node name="EndLabel" type="Label" parent="." unique_id=1789535815]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -11.5
+offset_right = 34.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_0xfos")
+theme_override_font_sizes/font_size = 80
+text = "THE END"
