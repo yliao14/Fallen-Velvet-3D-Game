@@ -4,17 +4,17 @@
 [ext_resource type="Texture2D" uid="uid://bpj5d2j0u3vic" path="res://cocktail glass.png" id="2_6bw1j"]
 [ext_resource type="Texture2D" uid="uid://bq4xqq3e07yc4" path="res://liquid.png" id="3_yl1yx"]
 [ext_resource type="Texture2D" uid="uid://040bkxb882pn" path="res://Photo/photoblank.png" id="4_6bw1j"]
+[ext_resource type="FontFile" uid="uid://d3jfv41vfox4m" path="res://AmericanTypewriter.ttc" id="4_7tyge"]
+[ext_resource type="Texture2D" uid="uid://6rdwcdu2ogi" path="res://paper.png" id="5_olibv"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hdxaf"]
-bg_color = Color(0.76862746, 0.6392157, 0.4862745, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lbqp6"]
+texture = ExtResource("5_olibv")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hdxaf"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6bw1j"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7tyge"]
+texture = ExtResource("5_olibv")
+modulate_color = Color(0.70980394, 0.52156866, 0.32941177, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yl1yx"]
 
@@ -91,6 +91,7 @@ offset_right = 211.84796
 offset_bottom = 55.32
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 0.937465, 0.77593976, 1)
+theme_override_fonts/font = ExtResource("4_7tyge")
 theme_override_font_sizes/font_size = 24
 text = "Add ingredients from your inventory"
 horizontal_alignment = 1
@@ -102,17 +103,18 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -80.0
-offset_top = -100.0
-offset_right = 71.5
-offset_bottom = -41.0
+offset_left = -85.13559
+offset_top = -102.0
+offset_right = 76.63562
+offset_bottom = -39.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(0.25856712, 0.11683866, 0, 1)
+theme_override_fonts/font = ExtResource("4_7tyge")
 theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = SubResource("StyleBoxFlat_hdxaf")
+theme_override_styles/normal = SubResource("StyleBoxTexture_lbqp6")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_hdxaf")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_6bw1j")
+theme_override_styles/hover = SubResource("StyleBoxTexture_7tyge")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_yl1yx")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7tyge")
 text = "Mix"

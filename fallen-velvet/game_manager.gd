@@ -79,11 +79,11 @@ const QUEST_TEXTS: Dictionary = {
 	QuestStage.COLLECT_INGREDIENTS: "Find the ingredients",
 	QuestStage.FIND_GLASS: "Find the cocktail glass",
 	QuestStage.MIX_COCKTAIL: "Mix the cocktail",
-	QuestStage.FIND_LETTERS: "Find the letters",
+	QuestStage.FIND_LETTERS: "Find the letter cards",
 	QuestStage.SOLVE_PUZZLE: "Piece together the image",
 	QuestStage.FIND_DEVELOPER: "Find the developer fluid",
 	QuestStage.FIND_FLASHLIGHT: "Find a flashlight",
-	QuestStage.FIND_CODES: "Find the hidden codes",
+	QuestStage.FIND_CODES: "Find the hidden codes on the wall",
 }
 
 const TARGET_CODE: String = "427"
