@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://burbfip7sjyxk"]
+
+[ext_resource type="Script" uid="uid://bm2ur4f4eb7nv" path="res://loading.gd" id="1_pg7vo"]
+[ext_resource type="FontFile" uid="uid://d3jfv41vfox4m" path="res://AmericanTypewriter.ttc" id="2_1l04a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ecfth"]
+bg_color = Color(0.24618208, 0.17211393, 0.09806805, 1)
+
+[node name="Loading" type="Control" unique_id=1231487145]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pg7vo")
+
+[node name="Background" type="ColorRect" parent="." unique_id=105279451]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.10166515, 0.05623877, 0.0088694235, 1)
+
+[node name="LoadingLabel" type="Label" parent="." unique_id=703620025]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -138.0
+offset_top = -44.0
+offset_right = 138.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_1l04a")
+theme_override_font_sizes/font_size = 32
+text = "Entering the bar..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1043672144]
+custom_minimum_size = Vector2(400, 35)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -201.0
+offset_top = 29.0
+offset_right = 199.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_ecfth")
+
+[node name="HintLabel" type="Label" parent="." unique_id=1739313741]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1

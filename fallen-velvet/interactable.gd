@@ -94,6 +94,7 @@ func interact() -> void:
 # 一次性物件（材料）拾取後消失
 func _disappear() -> void:
 	is_used = true
+	AudioManager.play_pickup() 
 	
 	var tween = create_tween().set_parallel(true)
 	tween.tween_property(self, "global_position:y", global_position.y + 0.5, 0.5)

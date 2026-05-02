@@ -108,6 +108,8 @@ func _validate() -> void:
 
 
 func _on_unlock_success() -> void:
+	AudioManager.play_code_correct()
+	
 	for dial in dials:
 		var tween = create_tween()
 		tween.tween_property(dial, "modulate", Color(0.3, 1.0, 0.4), 0.3)
