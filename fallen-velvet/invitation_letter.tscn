@@ -16,6 +16,14 @@ corner_radius_top_right = 24
 corner_radius_bottom_right = 24
 corner_radius_bottom_left = 24
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3t6sh"]
+bg_color = Color(0.11537286, 0.08473144, 0.04400546, 1)
+border_color = Color(0.8001019, 0.8001019, 0.8001019, 0)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_50hp6"]
 bg_color = Color(0.610555, 0.4875741, 0.36511692, 1)
 corner_radius_top_left = 24
@@ -83,5 +91,6 @@ theme_override_colors/font_hover_color = Color(0.3021626, 0.16270453, 0.00992501
 theme_override_fonts/font = ExtResource("3_50hp6")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_sq0ru")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3t6sh")
 theme_override_styles/hover = SubResource("StyleBoxFlat_50hp6")
 text = "Skip"

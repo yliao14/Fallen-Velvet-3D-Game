@@ -13,7 +13,6 @@ enum InteractableType {
 	PUZZLE_PIECE,
 	DEVELOPER,
 	FLASHLIGHT, 
-	CODE_DIGIT, 
 	LOCKER,
 }
 
@@ -43,7 +42,7 @@ func interact() -> void:
 			if not GameManager.has_recipe:
 				GameManager.collect_recipe()
 	
-		# ⭐ 不論第幾次，都打開 recipe UI
+		# 不論第幾次，都打開 recipe UI
 			var recipe_ui = get_tree().get_first_node_in_group("recipe_ui")
 			if recipe_ui and recipe_ui.has_method("show_fullscreen"):
 				recipe_ui.show_fullscreen()
@@ -83,17 +82,7 @@ func interact() -> void:
 		InteractableType.FLASHLIGHT:
 			GameManager.obtain_flashlight()
 			_disappear()
-		InteractableType.CODE_DIGIT:
-			if has_node("DigitVisual") and $DigitVisual.is_lit:
-				GameManager.find_code(code_digit)
-				_on_code_recorded()
 		InteractableType.LOCKER:
-			if not GameManager._all_codes_found():
-				var toast = get_tree().get_first_node_in_group("toast_ui")
-				if toast:
-					toast.show_toast("Find all the codes first")
-				return
-	
 			var lock_ui = get_tree().get_first_node_in_group("code_lock_ui")
 			if lock_ui and lock_ui.has_method("open_lock"):
 				lock_ui.open_lock()

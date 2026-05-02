@@ -38,13 +38,13 @@ func _process(delta: float) -> void:
 	
 	if not flashlight:
 		if should_debug:
-			print("⚠️ no flashlight reference")
+			print(" no flashlight reference")
 		_set_lit(false)
 		return
 	
 	if not flashlight.visible:
 		if should_debug:
-			print("⚠️ flashlight not visible (turned off)")
+			print("flashlight not visible (turned off)")
 		_set_lit(false)
 		return
 	
@@ -74,7 +74,7 @@ func _set_lit(lit: bool) -> void:
 	if is_lit == lit:
 		return
 	is_lit = lit
-	print("💡 set_lit: ", lit, " | digit = ", text)
+	print(" set_lit: ", lit, " | digit = ", text)
 	
 	var target_alpha = 1.0 if lit else 0.0
 	var tween = create_tween()

@@ -2,7 +2,21 @@
 
 [ext_resource type="Script" uid="uid://bk8657ahflvkj" path="res://ending_ui.gd" id="1_qkvxn"]
 [ext_resource type="Texture2D" uid="uid://348vb2f0eard" path="res://Photo/girl.png" id="2_2v1b7"]
+[ext_resource type="Texture2D" uid="uid://coacu6mxkdmqd" path="res://显影液:冲洗液/Preview Images/GlassBottleWithCork.png" id="2_yxne4"]
 [ext_resource type="FontFile" uid="uid://d3jfv41vfox4m" path="res://AmericanTypewriter.ttc" id="3_0xfos"]
+[ext_resource type="Texture2D" uid="uid://040bkxb882pn" path="res://Photo/photoblank.png" id="3_bp88b"]
+[ext_resource type="Texture2D" uid="uid://6rdwcdu2ogi" path="res://paper.png" id="6_pt76f"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fqaj5"]
+texture = ExtResource("6_pt76f")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fftod"]
+texture = ExtResource("6_pt76f")
+modulate_color = Color(0.70980394, 0.52156866, 0.32941177, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lf462"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wxje8"]
 
 [node name="EndingUI" type="CanvasLayer" unique_id=600525068]
 script = ExtResource("1_qkvxn")
@@ -22,19 +36,39 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.37632865, 0.08735316, 0.09206814, 0)
+color = Color(0.21914086, 0.034864035, 0.037245177, 0)
+
+[node name="DeveloperImage" type="TextureRect" parent="." unique_id=1085901135]
+modulate = Color(1, 1, 1, 0)
+offset_left = -49.0
+offset_top = -96.0
+offset_right = 807.0
+offset_bottom = 760.0
+texture = ExtResource("2_yxne4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PhotoImage" type="TextureRect" parent="." unique_id=2004962894]
+modulate = Color(1, 1, 1, 0)
+offset_left = 600.0
+offset_top = 150.0
+offset_right = 977.0
+offset_bottom = 527.0
+texture = ExtResource("3_bp88b")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="PhotoReveal" type="TextureRect" parent="." unique_id=1374236890]
 modulate = Color(1, 1, 1, 0)
-anchors_preset = 8
+anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.448
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 0.448
 offset_left = -451.0
-offset_top = -307.0
+offset_top = -256.30402
 offset_right = 442.0
-offset_bottom = 322.0
+offset_bottom = 273.69598
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_2v1b7")
@@ -43,35 +77,91 @@ stretch_mode = 5
 
 [node name="TruthLabel" type="Label" parent="." unique_id=350734778]
 modulate = Color(1, 1, 1, 0)
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = -1
+anchor_left = 0.50200003
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 0.50200003
 anchor_bottom = 1.0
-offset_left = -126.0
-offset_top = -82.0
-offset_right = 131.0
-offset_bottom = -45.0
+offset_left = -133.30402
+offset_top = -348.0
+offset_right = 123.695984
+offset_bottom = -298.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_colors/font_color = Color(0.7172241, 0.23851743, 0.14306408, 1)
+theme_override_colors/font_color = Color(0.6853271, 0.1759134, 0.15759644, 1)
 theme_override_fonts/font = ExtResource("3_0xfos")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 48
 text = "Truth revealed..."
+
+[node name="SubtitleLabel" type="Label" parent="." unique_id=518969321]
+modulate = Color(1, 1, 1, 0)
+offset_left = 447.0
+offset_top = 542.0
+offset_right = 706.0
+offset_bottom = 601.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.70000005)
+theme_override_fonts/font = ExtResource("3_0xfos")
+theme_override_font_sizes/font_size = 24
+text = "You never left this bar.
+April 27, 1984"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="EndLabel" type="Label" parent="." unique_id=1789535815]
 modulate = Color(1, 1, 1, 0)
-anchors_preset = 8
+anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.133
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -34.0
-offset_top = -11.5
-offset_right = 34.0
-offset_bottom = 11.5
+anchor_bottom = 0.133
+offset_left = -182.0
+offset_top = -46.184
+offset_right = 178.0
+offset_bottom = 46.816
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_0xfos")
 theme_override_font_sizes/font_size = 80
 text = "THE END"
+
+[node name="FinalOverlay" type="ColorRect" parent="." unique_id=748330426]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0872437, 0.014508529, 0.002798695, 1)
+
+[node name="RestartButton" type="Button" parent="." unique_id=1882574435]
+process_mode = 3
+anchors_preset = -1
+offset_left = 416.0
+offset_top = 200.0
+offset_right = 743.0
+offset_bottom = 302.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.34169102, 0.17406687, 0, 1)
+theme_override_fonts/font = ExtResource("3_0xfos")
+theme_override_font_sizes/font_size = 43
+theme_override_styles/normal = SubResource("StyleBoxTexture_fqaj5")
+theme_override_styles/hover = SubResource("StyleBoxTexture_fftod")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_lf462")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wxje8")
+text = "Restart"
+
+[node name="EndButton" type="Button" parent="." unique_id=949037434]
+process_mode = 3
+anchors_preset = -1
+offset_left = 419.0
+offset_top = 345.0
+offset_right = 746.0
+offset_bottom = 447.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.34169102, 0.17406687, 0, 1)
+theme_override_fonts/font = ExtResource("3_0xfos")
+theme_override_font_sizes/font_size = 43
+theme_override_styles/normal = SubResource("StyleBoxTexture_fqaj5")
+theme_override_styles/hover = SubResource("StyleBoxTexture_fftod")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_lf462")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wxje8")
+text = "End"
