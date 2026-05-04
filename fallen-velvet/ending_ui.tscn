@@ -88,7 +88,7 @@ offset_right = 123.695984
 offset_bottom = -298.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_colors/font_color = Color(0.6853271, 0.1759134, 0.15759644, 1)
+theme_override_colors/font_color = Color(0.7456827, 0.161625, 0.13133115, 1)
 theme_override_fonts/font = ExtResource("3_0xfos")
 theme_override_font_sizes/font_size = 48
 text = "Truth revealed..."
@@ -102,7 +102,7 @@ offset_bottom = 601.0
 theme_override_colors/font_color = Color(1, 1, 1, 0.70000005)
 theme_override_fonts/font = ExtResource("3_0xfos")
 theme_override_font_sizes/font_size = 24
-text = "You never left this bar.
+text = "You never left this bar...
 April 27, 1984"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -132,9 +132,23 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0872437, 0.014508529, 0.002798695, 1)
 
-[node name="RestartButton" type="Button" parent="." unique_id=1882574435]
+[node name="DevelopButton" type="Button" parent="." unique_id=1882574435]
 process_mode = 3
-anchors_preset = -1
+offset_left = 456.0
+offset_top = 516.0
+offset_right = 714.0
+offset_bottom = 584.0
+theme_override_colors/font_color = Color(0.34169102, 0.17406687, 0, 1)
+theme_override_fonts/font = ExtResource("3_0xfos")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_fqaj5")
+theme_override_styles/hover = SubResource("StyleBoxTexture_fftod")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_lf462")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wxje8")
+text = "Develop"
+
+[node name="RestartButton" type="Button" parent="." unique_id=1792879600]
+process_mode = 3
 offset_left = 416.0
 offset_top = 200.0
 offset_right = 743.0
@@ -151,7 +165,6 @@ text = "Restart"
 
 [node name="EndButton" type="Button" parent="." unique_id=949037434]
 process_mode = 3
-anchors_preset = -1
 offset_left = 419.0
 offset_top = 345.0
 offset_right = 746.0

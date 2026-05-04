@@ -11,11 +11,10 @@ extends CanvasLayer
 @onready var photo_slot: TextureRect = $SidePanel/PhotoSlot
 @onready var developer_slot: TextureRect = $SidePanel/DeveloperSlot 
 @onready var side_panel: Control = $SidePanel
-@onready var develop_button: Button = $SidePanel/DevelopButton
 
 var has_appeared: bool = false
 var is_clickable_mode: bool = false
-
+var is_ending: bool = false
 
 func _ready() -> void:
 	add_to_group("inventory_ui")
@@ -28,8 +27,6 @@ func _ready() -> void:
 	photo_slot.modulate.a = 0.0
 	photo_slot.gui_input.connect(_on_photo_input)
 	
-	develop_button.visible = false
-	develop_button.pressed.connect(_on_develop_pressed)
 	
 	GameManager.recipe_found.connect(_on_recipe_found)
 	GameManager.item_collected.connect(_on_item_collected)
@@ -152,6 +149,8 @@ func _animate_slot_use(item_id: String) -> void:
 
 
 func _process(_delta: float) -> void:
+	if is_ending:
+		return 
 	if has_appeared and not side_panel.visible:
 		side_panel.visible = true
 		side_panel.modulate.a = 1.0
@@ -162,35 +161,11 @@ func _show_toast(message: String) -> void:
 	if toast and toast.has_method("show_toast"):
 		toast.show_toast(message)
 		
-func _on_locker_unlocked() -> void:  
-	if GameManager.has_photo and GameManager.has_developer:
-		_show_develop_button()
-		
-func _show_develop_button() -> void:
-	develop_button.visible = true
-	develop_button.modulate.a = 0.0
-	develop_button.scale = Vector2(0.8, 0.8)
-	develop_button.pivot_offset = develop_button.size / 2.0
+func _on_locker_unlocked() -> void:
+	is_ending = true
 	
-	var tween = create_tween().set_parallel(true)
-	tween.tween_property(develop_button, "modulate:a", 1.0, 0.5)
-	tween.tween_property(develop_button, "scale", Vector2.ONE, 0.5)\
-		.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	var fade = create_tween()
+	fade.tween_property(side_panel, "modulate:a", 0.0, 1.0)
+	await fade.finished
+	side_panel.visible = false
 	
-	await tween.finished
-	_pulse_develop_button()
-
-
-func _pulse_develop_button() -> void:
-	var pulse = create_tween()
-	pulse.set_loops()
-	pulse.tween_property(develop_button, "modulate", Color(1.3, 1.3, 1.3), 0.8)\
-		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	pulse.tween_property(develop_button, "modulate", Color.WHITE, 0.8)\
-		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-
-
-func _on_develop_pressed() -> void:
-	var ending = get_tree().get_first_node_in_group("ending_ui")
-	if ending and ending.has_method("start_developing"):
-		ending.start_developing()

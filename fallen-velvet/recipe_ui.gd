@@ -6,7 +6,7 @@ extends CanvasLayer
 
 var player: Node = null
 var has_shown_first_time: bool = false
-
+var is_disabled: bool = false
 
 func _ready() -> void:
 	add_to_group("recipe_ui")
@@ -18,6 +18,7 @@ func _ready() -> void:
 	recipe_icon.pressed.connect(show_fullscreen)
 	
 	GameManager.recipe_found.connect(_on_recipe_found)
+	GameManager.developing_started.connect(_on_developing_started)
 	
 	await get_tree().process_frame
 	player = get_tree().get_first_node_in_group("player")
@@ -74,9 +75,24 @@ func _show_recipe_icon() -> void:
 	tween.tween_property(recipe_icon, "scale", Vector2.ONE, 0.4)\
 		.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 
-
+func _on_developing_started() -> void:
+	is_disabled = true
+	
+	# 如果食譜開著,先關掉
+	if fullscreen_view.visible:
+		_on_close_pressed()
+	
+	# Recipe icon 淡出
+	if recipe_icon.visible:
+		var tween = create_tween()
+		tween.tween_property(recipe_icon, "modulate:a", 0.0, 0.8)
+		await tween.finished
+		recipe_icon.visible = false
+	
 func _unhandled_input(event: InputEvent) -> void:
-	# 全螢幕食譜開著時，Esc 關閉
+	if is_disabled:
+		return
+	
 	if fullscreen_view.visible and event.is_action_pressed("ui_cancel"):
 		_on_close_pressed()
 		get_viewport().set_input_as_handled()

@@ -68,7 +68,13 @@ func interact() -> void:
 				var mixer = get_tree().get_first_node_in_group("cocktail_mixer")
 				if mixer and mixer.has_method("_on_glass_found"):
 					mixer._on_glass_found()
-		InteractableType.LETTER:                              
+		InteractableType.LETTER:
+			if GameManager.current_stage < GameManager.QuestStage.FIND_LETTERS:
+				var toast = get_tree().get_first_node_in_group("toast_ui")
+				if toast and toast.has_method("show_toast"):
+					toast.show_toast("Mix the cocktail first.")
+					return
+			
 			var letter_id = letter_char + "_" + str(letter_index)
 			GameManager.collect_letter(letter_id)
 			_disappear()

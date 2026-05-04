@@ -7,6 +7,7 @@ extends CanvasLayer
 @onready var quit_button: Button = $PauseMenu/QuitButton
 
 var player: Node = null
+var is_disabled: bool = false
 
 
 func _ready() -> void:
@@ -20,11 +21,22 @@ func _ready() -> void:
 	main_menu_button.pressed.connect(_on_main_menu_pressed)
 	quit_button.pressed.connect(_on_quit_pressed)
 	
+	
+	GameManager.developing_started.connect(_on_developing_started)
+	
 	await get_tree().process_frame
 	player = get_tree().get_first_node_in_group("player")
 
+func _on_developing_started() -> void:
+	is_disabled = true
+	var tween = create_tween()
+	tween.tween_property(pause_button, "modulate:a", 0.0, 0.8)
+	await tween.finished
+	pause_button.visible = false
 
 func _toggle_pause() -> void:
+	if is_disabled:
+		return
 	var is_paused = not get_tree().paused
 	get_tree().paused = is_paused
 	
@@ -63,10 +75,9 @@ func _on_quit_pressed() -> void:
 	get_tree().quit()
 
 
-# ESC 鍵也能切換暫停
 func _unhandled_input(event: InputEvent) -> void:
+	if is_disabled:
+		return
 	if event.is_action_pressed("ui_cancel"):
-		# 但只有當沒有其他 UI 開著時才暫停
-		# (避免關 inventory / recipe 時誤觸暫停)
 		_toggle_pause()
 		get_viewport().set_input_as_handled()

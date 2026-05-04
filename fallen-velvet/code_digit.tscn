@@ -13,6 +13,7 @@ interactable_type = 11
 prompt_text = "[E] Note this number"
 
 [node name="DigitVisual" type="Label3D" parent="." unique_id=1958751758]
+outline_modulate = Color(0, 0, 0, 0)
 font_size = 96
 outline_size = 8
 script = ExtResource("2_5k6le")

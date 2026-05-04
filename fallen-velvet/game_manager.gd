@@ -26,6 +26,7 @@ signal flashlight_state_changed(is_on: bool)
 # Locker
 signal code_lock_unlocked
 signal locker_unlocked
+signal developing_started
 
 # Quest
 signal quest_stage_changed(new_stage: QuestStage)
@@ -284,13 +285,13 @@ func attempt_code_unlock(input_code: String) -> bool:
 func unlock_locker() -> void:
 	if is_locker_unlocked:
 		return
-		is_locker_unlocked = true
-		locker_unlocked.emit()
-		_advance_quest(QuestStage.DEVELOP_PHOTO)
-		print("Locker unlocked")
+	is_locker_unlocked = true
+	locker_unlocked.emit()
+	_advance_quest(QuestStage.DEVELOP_PHOTO)
+	print("Locker unlocked")
 	
-	# 等一下讓 toast 顯示完，再進 ending
-	await get_tree().create_timer(2.0).timeout
+	# 等 code lock UI 淡出後啟動 ending intro
+	await get_tree().create_timer(1.5).timeout
 	var ending = get_tree().get_first_node_in_group("ending_ui")
 	if ending and ending.has_method("start_developing"):
 		ending.start_developing()
